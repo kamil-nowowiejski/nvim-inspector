@@ -14,7 +14,7 @@
 
 ---- Internal tests tree representation
 --- @class TestsTree
---- @field roots TestTreeNode
+--- @field roots TestTreeNode[]
 
 --- @class TestTreeNode
 --- @field status "success" | "failure"
