@@ -6,7 +6,7 @@ local function toTestNameNode(test)
     local node = {
         text = test.testName,
         status = test.status,
-        isExpanded = true,
+        isExpanded = false,
         duration = test.duration,
         children = {},
         errorMessage = test.errorMessage,
@@ -31,19 +31,46 @@ local function toNamespaceNode(test)
     return node
 end
 
+--- @param nodes { [string]: NamespaceNode } key is equal to value.text (or namespace name)
+local function sortNamespaceNodes(nodes)
+    local keys = { }
+    for k in pairs(nodes) do table.insert(keys, k) end
+    table.sort(keys)
+    local sorted = {}
+    for _, k in ipairs(keys) do table.insert(sorted, nodes[k]) end
+    return sorted
+end
+
+--- @param nodes TestNameNode[]
+local function sortTestNodes(nodes)
+    local testByName = { }
+    local names = { }
+    for _, node in ipairs(nodes) do
+        table.insert(names, node.text)
+        testByName[node.text] = node
+    end
+    table.sort(names)
+    local sorted = { }
+    for _, name in ipairs(names) do
+        table.insert(sorted, testByName[name])
+    end
+end
 
 --- @param tests Test[]
 --- @return TestTreeNode[]
 local function createNodes(tests)
+    --- @type { [string]: NamespaceNode } key is equal to value.text (or namespace name)
     local namespaceNodes = {}
+
+    --- @type TestNameNode[]
     local testNameNodes = {}
 
     --- @type { [string]: Test[] } key is namespace part name
     local testsPerNamespace = {}
 
-    for _, test in pairs(tests) do
+    for _, test in ipairs(tests) do
         if #test.namespaceParts == 0 then
-            testNameNodes[#testNameNodes+1] = toTestNameNode(test)
+            table.insert(testNameNodes, toTestNameNode(test))
         else
             local namespaceName = test.namespaceParts[1]
             local namespaceNode = namespaceNodes[namespaceName]
@@ -54,18 +81,24 @@ local function createNodes(tests)
             end
             table.remove(test.namespaceParts, 1)
             local testsForNamespace = testsPerNamespace[namespaceNode.text]
-            testsForNamespace[#testsForNamespace+1] = test
+            table.insert(testsForNamespace, test)
             if test.status == 'failure' then
                 namespaceNode.status = 'failure'
             end
         end
     end
 
-    local allNodes = testNameNodes
-    for _, namespaceNode in pairs(namespaceNodes) do
+    local allNodes = {}
+    local sortedNamespaceNodes = sortNamespaceNodes(namespaceNodes)
+    for _, namespaceNode in pairs(sortedNamespaceNodes) do
         local testsForNamespace = testsPerNamespace[namespaceNode.text]
         namespaceNode.children = createNodes(testsForNamespace)
-        allNodes[#allNodes+1] = namespaceNode
+        table.insert(allNodes, namespaceNode)
+    end
+
+    local sortedTests = sortTestNodes(testNameNodes)
+    for _, testNameNode in ipairs(testNameNodes) do
+        table.insert(allNodes, testNameNode)
     end
 
     return allNodes
