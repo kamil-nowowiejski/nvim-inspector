@@ -54,6 +54,7 @@ local function sortTestNodes(nodes)
     for _, name in ipairs(names) do
         table.insert(sorted, testByName[name])
     end
+    return sorted
 end
 
 --- @param tests Test[]
@@ -97,7 +98,7 @@ local function createNodes(tests)
     end
 
     local sortedTests = sortTestNodes(testNameNodes)
-    for _, testNameNode in ipairs(testNameNodes) do
+    for _, testNameNode in ipairs(sortedTests) do
         table.insert(allNodes, testNameNode)
     end
 

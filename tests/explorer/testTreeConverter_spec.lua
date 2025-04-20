@@ -19,7 +19,7 @@ describe('convertTestsToTestsTree', function()
                 errorMessage = 'I blew up!',
                 stackTrace = {
                     { line = 'line 1_1_1', isMyCode = false },
-                    { line = 'line 1_1_2', isMyCode = false },
+                    { line = 'line 1_1_2', isMyCode = true },
                     { line = 'line 1_1_3', isMyCode = false },
                 }
             },
@@ -38,7 +38,7 @@ describe('convertTestsToTestsTree', function()
                 stackTrace = {
                     { line = 'line 1_2_1', isMyCode = false },
                     { line = 'line 1_2_2', isMyCode = false },
-                    { line = 'line 1_2_3', isMyCode = false },
+                    { line = 'line 1_2_3', isMyCode = true },
                 }
             },
             {
@@ -78,9 +78,9 @@ describe('convertTestsToTestsTree', function()
                 status = 'failure',
                 errorMessage = 'Expected number empty list',
                 stackTrace = {
-                    { line = 'line 2_2_1', isMyCode = false },
-                    { line = 'line 2_2_2', isMyCode = false },
-                    { line = 'line 2_2_3', isMyCode = false },
+                    { line = 'line 2_2_1', isMyCode = true },
+                    { line = 'line 2_2_2', isMyCode = true },
+                    { line = 'line 2_2_3', isMyCode = true },
                 }
             },
         }
@@ -118,22 +118,26 @@ describe('convertTestsToTestsTree', function()
                                             status = 'failure',
                                             isExpanded = false,
                                             errorMessage = 'I blew up!',
-                                            stackTrace = { 'line 1_1_1', 'line 1_1_2', 'line 1_1_3', },
+                                            stackTrace = {
+                                                { line = 'line 1_1_1', isMyCode = false },
+                                                { line = 'line 1_1_2', isMyCode = true },
+                                                { line = 'line 1_1_3', isMyCode = false },
+                                            },
                                             children = {}
                                         },
+                                    }
+                                },
+                                {
+                                    text = 'Part3',
+                                    isExpanded = true,
+                                    status = 'success',
+                                    children = {
                                         {
-                                            text = 'Part3',
-                                            isExpanded = true,
+                                            text = 'TestInBetween',
+                                            duration = '00:00:00.008346573',
                                             status = 'success',
-                                            children = {
-                                                {
-                                                    text = 'TestInBetween',
-                                                    duration = '00:00:00.008346573',
-                                                    status = 'success',
-                                                    isExpanded = false,
-                                                    children = {}
-                                                }
-                                            }
+                                            isExpanded = false,
+                                            children = {}
                                         }
                                     }
                                 },
@@ -143,10 +147,21 @@ describe('convertTestsToTestsTree', function()
                                     status = 'failure',
                                     isExpanded = false,
                                     errorMessage = 'kaboom!',
-                                    stackTrace = { 'line 1_2_1', 'line 1_2_2', 'line 1_2_3', },
+                                    stackTrace = {
+                                        { line = 'line 1_2_1', isMyCode = false },
+                                        { line = 'line 1_2_2', isMyCode = false },
+                                        { line = 'line 1_2_3', isMyCode = true },
+                                    },
                                     children = {}
                                 }
                             }
+                        },
+                        {
+                            text = 'TestFive',
+                            duration = '00:00:00.0993539',
+                            status = 'success',
+                            isExpanded = false,
+                            children = {}
                         },
                         {
                             text = 'TestFour',
@@ -155,13 +170,6 @@ describe('convertTestsToTestsTree', function()
                             isExpanded = false,
                             children = {}
                         },
-                        {
-                            text = 'TestFive',
-                            duration = '00:00:00.0993539',
-                            status = 'success',
-                            isExpanded = false,
-                            children = {}
-                        }
                     }
                 },
                 {
@@ -185,9 +193,20 @@ describe('convertTestsToTestsTree', function()
                                             status = 'failure',
                                             isExpanded = false,
                                             errorMessage = 'Expected number 2 but got 4',
-                                            stackTrace = { 'line 2_1_1', 'line 2_1_2', 'line 2_1_3', },
+                                            stackTrace = {
+                                                { line = 'line 2_1_1', isMyCode = false },
+                                                { line = 'line 2_1_2', isMyCode = false },
+                                                { line = 'line 2_1_3', isMyCode = false },
+                                            },
                                             children = {}
-                                        }
+                                        },
+                                        {
+                                            text = 'TestSix',
+                                            duration = '00:00:00.034350',
+                                            status = 'success',
+                                            isExpanded = false,
+                                            children = {}
+                                        },
                                     }
                                 },
                                 {
@@ -196,7 +215,11 @@ describe('convertTestsToTestsTree', function()
                                     status = 'failure',
                                     isExpanded = false,
                                     errorMessage = 'Expected number empty list',
-                                    stackTrace = { 'line 2_2_1', 'line 2_2_2', 'line 2_2_3', },
+                                    stackTrace = {
+                                        { line = 'line 2_2_1', isMyCode = true },
+                                        { line = 'line 2_2_2', isMyCode = true },
+                                        { line = 'line 2_2_3', isMyCode = true },
+                                    },
                                     children = {}
                                 }
                             }
@@ -208,7 +231,6 @@ describe('convertTestsToTestsTree', function()
 
         local actual = sut.convertTestsToTestsTree(tests)
 
-        assert.are.same(expected.roots[1].children[1].children[1].children[2].stackTrace, actual.roots[1].children[1].children[1].children[2].stackTrace)
-        -- assert.are.same(expected, actual)
+        assert.are.same(expected, actual)
     end)
 end)
