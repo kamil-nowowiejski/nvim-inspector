@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="2371887c-aa67-4ee7-8df5-5c366972f39f" name="NOWOWIK@PLKRK2L1C2G4M3 2025-04-18 16:56:30" runUser="JEGINTL\NOWOWIK" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-04-18T16:56:30.4637685+02:00" queuing="2025-04-18T16:56:30.4637689+02:00" start="2025-04-18T16:56:28.8215783+02:00" finish="2025-04-18T16:56:30.4859442+02:00" />
+  <TestSettings name="default" id="aad45300-17f4-43a6-9283-aa59683848cd">
+    <Deployment runDeploymentRoot="NOWOWIK_PLKRK2L1C2G4M3_2025-04-18_16_56_30" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="ebd1da94-fc95-45ac-ac6f-593fa288e7ef" testId="51e0e617-bc46-af79-fdb8-e881a88a6a24" testName="Test.HereAllPass.Pass2" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0012265" startTime="2025-04-18T16:56:30.4100941+02:00" endTime="2025-04-18T16:56:30.4101070+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ebd1da94-fc95-45ac-ac6f-593fa288e7ef" />
+    <UnitTestResult executionId="5407e5a7-8411-4085-a428-e3632586446b" testId="da2baf90-35df-e0cb-e88a-d5d55278578c" testName="Test.QuickTest.ThisOnePasses" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0000294" startTime="2025-04-18T16:56:30.4362206+02:00" endTime="2025-04-18T16:56:30.4362206+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5407e5a7-8411-4085-a428-e3632586446b" />
+    <UnitTestResult executionId="111e66c5-dd1a-4b40-888c-2fa62b217723" testId="501034aa-477b-d0e3-be1b-ab91119c5abb" testName="Test.HereAllPass.Pass3(index: 1, animal: &quot;cat&quot;)" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0001776" startTime="2025-04-18T16:56:30.4124141+02:00" endTime="2025-04-18T16:56:30.4124141+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="111e66c5-dd1a-4b40-888c-2fa62b217723" />
+    <UnitTestResult executionId="5e1a8216-5b33-459c-b8aa-76f862b5455c" testId="0a787a1a-902b-5879-b9c2-4e454909ea78" testName="Test.HereAllPass.Pass3(index: 3, animal: &quot;mouse&quot;)" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0000407" startTime="2025-04-18T16:56:30.4123950+02:00" endTime="2025-04-18T16:56:30.4123951+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5e1a8216-5b33-459c-b8aa-76f862b5455c" />
+    <UnitTestResult executionId="c756a8a1-c1b9-46f1-9419-abc7d151ffcd" testId="04939919-e676-fd58-8b81-fbe85c9faf01" testName="Test.HereAllPass.Pass3(index: 2, animal: &quot;dog&quot;)" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0000046" startTime="2025-04-18T16:56:30.4124312+02:00" endTime="2025-04-18T16:56:30.4124312+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c756a8a1-c1b9-46f1-9419-abc7d151ffcd" />
+    <UnitTestResult executionId="1170c8f8-7aff-4540-b008-7f4516a76f99" testId="e7466edc-74e0-8400-fbe4-f5b53216fc2f" testName="Test.AnotherTest.ThisAlsoFails" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0010583" startTime="2025-04-18T16:56:30.4183166+02:00" endTime="2025-04-18T16:56:30.4183167+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1170c8f8-7aff-4540-b008-7f4516a76f99">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Exception : another failure</Message>
+          <StackTrace>   at Test.AnotherTest.ThisAlsoFails() in C:\GitRepos\timesheeter\test\AnotherTest.cs:line 14&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="91ed94f5-ae1f-408c-8540-37821d819faf" testId="520fffee-7f4b-14f5-e6a1-a9fb24b56025" testName="Test.HereAllPass.Pass1" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0000309" startTime="2025-04-18T16:56:30.4121831+02:00" endTime="2025-04-18T16:56:30.4121831+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="91ed94f5-ae1f-408c-8540-37821d819faf" />
+    <UnitTestResult executionId="e0711771-bf86-4ba5-9e71-411504b6fec4" testId="1c536a7a-1fe1-9e5b-7ef5-df720493b26f" testName="Test.QuickTest.ThisOneFails" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0001158" startTime="2025-04-18T16:56:30.4368084+02:00" endTime="2025-04-18T16:56:30.4368084+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e0711771-bf86-4ba5-9e71-411504b6fec4">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Exception : critical failure</Message>
+          <StackTrace>   at Test.QuickTest.ThisOneFails() in C:\GitRepos\timesheeter\test\QuickTest.cs:line 8&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0b41fb98-50d0-43b8-81db-1a049264b6ab" testId="ebd47700-0b00-d4c1-f4f3-f06476e37769" testName="Test.AnotherTest.ThisOneFails" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0001435" startTime="2025-04-18T16:56:30.4365947+02:00" endTime="2025-04-18T16:56:30.4365948+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0b41fb98-50d0-43b8-81db-1a049264b6ab">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Exception : kaboom!</Message>
+          <StackTrace>   at Test.AnotherTest.ThisOneFails() in C:\GitRepos\timesheeter\test\AnotherTest.cs:line 8&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="abb53f9c-a50c-454f-9a8b-ae77c8d09392" testId="aef68e64-bf08-2c59-5dd2-fc8cac79aef3" testName="Test.QuickTest.Run(index: 2, animal: &quot;dog&quot;)" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0001192" startTime="2025-04-18T16:56:30.4188578+02:00" endTime="2025-04-18T16:56:30.4188579+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abb53f9c-a50c-454f-9a8b-ae77c8d09392" />
+    <UnitTestResult executionId="1f0aa561-03ce-4b82-b867-2fec07217507" testId="ab3e446d-7a15-fdf3-9571-a7cf3cf82e81" testName="Test.QuickTest.Run(index: 1, animal: &quot;cat&quot;)" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0010432" startTime="2025-04-18T16:56:30.4187608+02:00" endTime="2025-04-18T16:56:30.4187609+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1f0aa561-03ce-4b82-b867-2fec07217507">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Exception : fail</Message>
+          <StackTrace>   at Test.QuickTest.Run(Int32 index, String animal) in C:\GitRepos\timesheeter\test\QuickTest.cs:line 17&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Test.HereAllPass.Pass3(index: 1, animal: &quot;cat&quot;)" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="501034aa-477b-d0e3-be1b-ab91119c5abb">
+      <Execution id="111e66c5-dd1a-4b40-888c-2fa62b217723" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass3" />
+    </UnitTest>
+    <UnitTest name="Test.QuickTest.ThisOneFails" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="1c536a7a-1fe1-9e5b-7ef5-df720493b26f">
+      <Execution id="e0711771-bf86-4ba5-9e71-411504b6fec4" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.QuickTest" name="ThisOneFails" />
+    </UnitTest>
+    <UnitTest name="Test.HereAllPass.Pass3(index: 2, animal: &quot;dog&quot;)" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="04939919-e676-fd58-8b81-fbe85c9faf01">
+      <Execution id="c756a8a1-c1b9-46f1-9419-abc7d151ffcd" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass3" />
+    </UnitTest>
+    <UnitTest name="Test.HereAllPass.Pass1" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="520fffee-7f4b-14f5-e6a1-a9fb24b56025">
+      <Execution id="91ed94f5-ae1f-408c-8540-37821d819faf" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass1" />
+    </UnitTest>
+    <UnitTest name="Test.AnotherTest.ThisAlsoFails" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="e7466edc-74e0-8400-fbe4-f5b53216fc2f">
+      <Execution id="1170c8f8-7aff-4540-b008-7f4516a76f99" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.AnotherTest" name="ThisAlsoFails" />
+    </UnitTest>
+    <UnitTest name="Test.QuickTest.Run(index: 2, animal: &quot;dog&quot;)" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="aef68e64-bf08-2c59-5dd2-fc8cac79aef3">
+      <Execution id="abb53f9c-a50c-454f-9a8b-ae77c8d09392" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.QuickTest" name="Run" />
+    </UnitTest>
+    <UnitTest name="Test.HereAllPass.Pass3(index: 3, animal: &quot;mouse&quot;)" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="0a787a1a-902b-5879-b9c2-4e454909ea78">
+      <Execution id="5e1a8216-5b33-459c-b8aa-76f862b5455c" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass3" />
+    </UnitTest>
+    <UnitTest name="Test.AnotherTest.ThisOneFails" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="ebd47700-0b00-d4c1-f4f3-f06476e37769">
+      <Execution id="0b41fb98-50d0-43b8-81db-1a049264b6ab" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.AnotherTest" name="ThisOneFails" />
+    </UnitTest>
+    <UnitTest name="Test.QuickTest.ThisOnePasses" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="da2baf90-35df-e0cb-e88a-d5d55278578c">
+      <Execution id="5407e5a7-8411-4085-a428-e3632586446b" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.QuickTest" name="ThisOnePasses" />
+    </UnitTest>
+    <UnitTest name="Test.QuickTest.Run(index: 1, animal: &quot;cat&quot;)" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="ab3e446d-7a15-fdf3-9571-a7cf3cf82e81">
+      <Execution id="1f0aa561-03ce-4b82-b867-2fec07217507" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.QuickTest" name="Run" />
+    </UnitTest>
+    <UnitTest name="Test.HereAllPass.Pass2" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="51e0e617-bc46-af79-fdb8-e881a88a6a24">
+      <Execution id="ebd1da94-fc95-45ac-ac6f-593fa288e7ef" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass2" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="51e0e617-bc46-af79-fdb8-e881a88a6a24" executionId="ebd1da94-fc95-45ac-ac6f-593fa288e7ef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="da2baf90-35df-e0cb-e88a-d5d55278578c" executionId="5407e5a7-8411-4085-a428-e3632586446b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="501034aa-477b-d0e3-be1b-ab91119c5abb" executionId="111e66c5-dd1a-4b40-888c-2fa62b217723" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a787a1a-902b-5879-b9c2-4e454909ea78" executionId="5e1a8216-5b33-459c-b8aa-76f862b5455c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="04939919-e676-fd58-8b81-fbe85c9faf01" executionId="c756a8a1-c1b9-46f1-9419-abc7d151ffcd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e7466edc-74e0-8400-fbe4-f5b53216fc2f" executionId="1170c8f8-7aff-4540-b008-7f4516a76f99" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="520fffee-7f4b-14f5-e6a1-a9fb24b56025" executionId="91ed94f5-ae1f-408c-8540-37821d819faf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c536a7a-1fe1-9e5b-7ef5-df720493b26f" executionId="e0711771-bf86-4ba5-9e71-411504b6fec4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ebd47700-0b00-d4c1-f4f3-f06476e37769" executionId="0b41fb98-50d0-43b8-81db-1a049264b6ab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aef68e64-bf08-2c59-5dd2-fc8cac79aef3" executionId="abb53f9c-a50c-454f-9a8b-ae77c8d09392" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab3e446d-7a15-fdf3-9571-a7cf3cf82e81" executionId="1f0aa561-03ce-4b82-b867-2fec07217507" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="11" executed="11" passed="7" failed="4" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.3.1+6b60a9e56a (64-bit .NET 9.0.4)&#xD;
+[xUnit.net 00:00:00.26]   Discovering: Test&#xD;
+[xUnit.net 00:00:00.29]   Discovered:  Test&#xD;
+[xUnit.net 00:00:00.30]   Starting:    Test&#xD;
+[xUnit.net 00:00:00.34]       System.Exception : another failure&#xD;
+[xUnit.net 00:00:00.34]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.34]         C:\GitRepos\timesheeter\test\AnotherTest.cs(14,0): at Test.AnotherTest.ThisAlsoFails()&#xD;
+[xUnit.net 00:00:00.34]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.34]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.34]       System.Exception : fail&#xD;
+[xUnit.net 00:00:00.34]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.34]         C:\GitRepos\timesheeter\test\QuickTest.cs(17,0): at Test.QuickTest.Run(Int32 index, String animal)&#xD;
+[xUnit.net 00:00:00.34]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.34]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.36]       System.Exception : kaboom!&#xD;
+[xUnit.net 00:00:00.36]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.36]         C:\GitRepos\timesheeter\test\AnotherTest.cs(8,0): at Test.AnotherTest.ThisOneFails()&#xD;
+[xUnit.net 00:00:00.36]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.36]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.36]       System.Exception : critical failure&#xD;
+[xUnit.net 00:00:00.36]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.36]         C:\GitRepos\timesheeter\test\QuickTest.cs(8,0): at Test.QuickTest.ThisOneFails()&#xD;
+[xUnit.net 00:00:00.36]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.36]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.36]   Finished:    Test&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="PLKRK2L1C2G4M3" outcome="Error" timestamp="2025-04-18T16:56:30.4172886+02:00">
+        <Text>[xUnit.net 00:00:00.34]     Test.AnotherTest.ThisAlsoFails [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="PLKRK2L1C2G4M3" outcome="Error" timestamp="2025-04-18T16:56:30.4186195+02:00">
+        <Text>[xUnit.net 00:00:00.34]     Test.QuickTest.Run(index: 1, animal: "cat") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="PLKRK2L1C2G4M3" outcome="Error" timestamp="2025-04-18T16:56:30.4760036+02:00">
+        <Text>[xUnit.net 00:00:00.36]     Test.AnotherTest.ThisOneFails [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="PLKRK2L1C2G4M3" outcome="Error" timestamp="2025-04-18T16:56:30.4761801+02:00">
+        <Text>[xUnit.net 00:00:00.36]     Test.QuickTest.ThisOneFails [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

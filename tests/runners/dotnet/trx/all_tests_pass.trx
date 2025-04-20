@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="1e0c393f-8848-42de-bdcd-0ba19143492c" name="NOWOWIK@PLKRK2L1C2G4M3 2025-04-18 16:55:58" runUser="JEGINTL\NOWOWIK" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-04-18T16:55:58.4218737+02:00" queuing="2025-04-18T16:55:58.4218741+02:00" start="2025-04-18T16:55:56.5198490+02:00" finish="2025-04-18T16:55:58.4255407+02:00" />
+  <TestSettings name="default" id="34cf37d3-6571-498e-8a7b-7b6b8ef34470">
+    <Deployment runDeploymentRoot="NOWOWIK_PLKRK2L1C2G4M3_2025-04-18_16_55_58" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="419d6354-91a5-4d1f-9eaf-b7154d1e163c" testId="501034aa-477b-d0e3-be1b-ab91119c5abb" testName="Test.HereAllPass.Pass3(index: 1, animal: &quot;cat&quot;)" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0001570" startTime="2025-04-18T16:55:58.3347510+02:00" endTime="2025-04-18T16:55:58.3347511+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="419d6354-91a5-4d1f-9eaf-b7154d1e163c" />
+    <UnitTestResult executionId="ea208cd0-6e0b-46ce-98ca-b17a548890a5" testId="04939919-e676-fd58-8b81-fbe85c9faf01" testName="Test.HereAllPass.Pass3(index: 2, animal: &quot;dog&quot;)" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0000036" startTime="2025-04-18T16:55:58.3347637+02:00" endTime="2025-04-18T16:55:58.3347638+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ea208cd0-6e0b-46ce-98ca-b17a548890a5" />
+    <UnitTestResult executionId="2f1c4fb3-2909-49d4-98ef-44fee453ba0e" testId="51e0e617-bc46-af79-fdb8-e881a88a6a24" testName="Test.HereAllPass.Pass2" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0012675" startTime="2025-04-18T16:55:58.3325356+02:00" endTime="2025-04-18T16:55:58.3325477+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2f1c4fb3-2909-49d4-98ef-44fee453ba0e" />
+    <UnitTestResult executionId="bb3c97c0-688a-4c48-8838-26fd4aadcb92" testId="0a787a1a-902b-5879-b9c2-4e454909ea78" testName="Test.HereAllPass.Pass3(index: 3, animal: &quot;mouse&quot;)" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0000217" startTime="2025-04-18T16:55:58.3347351+02:00" endTime="2025-04-18T16:55:58.3347351+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bb3c97c0-688a-4c48-8838-26fd4aadcb92" />
+    <UnitTestResult executionId="2a3e428c-f541-4cd8-9101-8867f88dc2e2" testId="520fffee-7f4b-14f5-e6a1-a9fb24b56025" testName="Test.HereAllPass.Pass1" computerName="PLKRK2L1C2G4M3" duration="00:00:00.0000400" startTime="2025-04-18T16:55:58.3345119+02:00" endTime="2025-04-18T16:55:58.3345119+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2a3e428c-f541-4cd8-9101-8867f88dc2e2" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Test.HereAllPass.Pass3(index: 1, animal: &quot;cat&quot;)" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="501034aa-477b-d0e3-be1b-ab91119c5abb">
+      <Execution id="419d6354-91a5-4d1f-9eaf-b7154d1e163c" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass3" />
+    </UnitTest>
+    <UnitTest name="Test.HereAllPass.Pass3(index: 2, animal: &quot;dog&quot;)" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="04939919-e676-fd58-8b81-fbe85c9faf01">
+      <Execution id="ea208cd0-6e0b-46ce-98ca-b17a548890a5" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass3" />
+    </UnitTest>
+    <UnitTest name="Test.HereAllPass.Pass1" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="520fffee-7f4b-14f5-e6a1-a9fb24b56025">
+      <Execution id="2a3e428c-f541-4cd8-9101-8867f88dc2e2" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass1" />
+    </UnitTest>
+    <UnitTest name="Test.HereAllPass.Pass3(index: 3, animal: &quot;mouse&quot;)" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="0a787a1a-902b-5879-b9c2-4e454909ea78">
+      <Execution id="bb3c97c0-688a-4c48-8838-26fd4aadcb92" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass3" />
+    </UnitTest>
+    <UnitTest name="Test.HereAllPass.Pass2" storage="c:\gitrepos\timesheeter\test\bin\debug\net9.0\test.dll" id="51e0e617-bc46-af79-fdb8-e881a88a6a24">
+      <Execution id="2f1c4fb3-2909-49d4-98ef-44fee453ba0e" />
+      <TestMethod codeBase="C:\GitRepos\timesheeter\test\bin\Debug\net9.0\Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Test.HereAllPass" name="Pass2" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="501034aa-477b-d0e3-be1b-ab91119c5abb" executionId="419d6354-91a5-4d1f-9eaf-b7154d1e163c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="04939919-e676-fd58-8b81-fbe85c9faf01" executionId="ea208cd0-6e0b-46ce-98ca-b17a548890a5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="51e0e617-bc46-af79-fdb8-e881a88a6a24" executionId="2f1c4fb3-2909-49d4-98ef-44fee453ba0e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a787a1a-902b-5879-b9c2-4e454909ea78" executionId="bb3c97c0-688a-4c48-8838-26fd4aadcb92" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="520fffee-7f4b-14f5-e6a1-a9fb24b56025" executionId="2a3e428c-f541-4cd8-9101-8867f88dc2e2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="5" executed="5" passed="5" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.3.1+6b60a9e56a (64-bit .NET 9.0.4)&#xD;
+[xUnit.net 00:00:00.26]   Discovering: Test&#xD;
+[xUnit.net 00:00:00.29]   Discovered:  Test&#xD;
+[xUnit.net 00:00:00.30]   Starting:    Test&#xD;
+[xUnit.net 00:00:00.33]   Finished:    Test&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
