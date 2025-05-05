@@ -9,7 +9,7 @@ local testsTree = nil
 local lines = nil
 
 local function redrawTree()
-    lines = require("plugins.vimtest.lineConverter").convertToLines(testsTree)
+    lines = require('inspector.explorer.lineConverter').convertToLines(testsTree)
 	mainBuffer.clearTestBuffer()
 	mainBuffer.appendLinesToTestBuffer(lines)
 end
@@ -82,6 +82,7 @@ end
 --- @param tests Test[]
 M.showTests = function(tests)
     testsTree = require('inspector.explorer.testTreeConverter').convertTestsToTestsTree(tests)
+    mainBuffer.open()
     redrawTree()
     setupLocalKeymaps()
 end

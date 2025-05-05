@@ -15,9 +15,11 @@ local function modifyTestBuffer(modifyFunction)
 end
 
 M.clearTestBuffer = function()
-	modifyTestBuffer(function()
-		vim.api.nvim_buf_set_lines(mainBufferId, 0, -1, false, {})
-	end)
+    if mainBufferId ~= -1 then
+        modifyTestBuffer(function()
+            vim.api.nvim_buf_set_lines(mainBufferId, 0, -1, false, {})
+        end)
+    end
 end
 
 M.open = function()
