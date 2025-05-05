@@ -3,32 +3,28 @@ local M = {}
 --- @param test Test
 --- @return TestNameNode
 local function toTestNameNode(test)
-    local node = {
+    return {
         text = test.testName,
         status = test.status,
         isExpanded = false,
         duration = test.duration,
         children = {},
         errorMessage = test.errorMessage,
-        stackTrace = test.stackTrace
+        stackTrace = test.stackTrace,
+        nodeType = "test"
     }
-    local metatable = { type = "TestNameNode" }
-    setmetatable(node, metatable)
-    return node
 end
 
 --- @param test Test
 --- @return NamespaceNode
 local function toNamespaceNode(test)
-    local node = {
+    return {
         text = test.namespaceParts[1],
         status = 'success',
         isExpanded = true,
-        children = {}
+        children = {},
+        nodeType = 'namespace'
     }
-    local metatable = { type = "NamespaceNode" }
-    setmetatable(node, metatable)
-    return node
 end
 
 --- @param nodes { [string]: NamespaceNode } key is equal to value.text (or namespace name)
@@ -55,6 +51,15 @@ local function sortTestNodes(nodes)
         table.insert(sorted, testByName[name])
     end
     return sorted
+end
+
+--- @param children TestTreeNode[]
+--- @return boolean
+local function hasFailedChild(children)
+    for _, child in ipairs(children) do
+        if child.status == 'failure' then return true end
+    end
+    return false
 end
 
 --- @param tests Test[]
@@ -94,6 +99,7 @@ local function createNodes(tests)
     for _, namespaceNode in pairs(sortedNamespaceNodes) do
         local testsForNamespace = testsPerNamespace[namespaceNode.text]
         namespaceNode.children = createNodes(testsForNamespace)
+        namespaceNode.isExpanded = hasFailedChild(namespaceNode.children)
         table.insert(allNodes, namespaceNode)
     end
 

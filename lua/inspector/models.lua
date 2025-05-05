@@ -21,6 +21,7 @@
 --- @field text string
 --- @field isExpanded boolean
 --- @field children TestTreeNode[]
+--- @field nodeType "test" | "namespace"
 
 --- @class NamespaceNode : TestTreeNode
 

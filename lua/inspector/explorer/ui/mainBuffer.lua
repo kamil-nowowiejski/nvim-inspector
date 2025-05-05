@@ -1,0 +1,77 @@
+local M = {}
+
+--- @type number
+local mainBufferId = -1
+M.getId = function() return mainBufferId end
+
+local function modifyTestBuffer(modifyFunction)
+	local setOptionOpts = {
+		buf = mainBufferId,
+	}
+	vim.api.nvim_set_option_value("readonly", false, setOptionOpts)
+	modifyFunction()
+	vim.api.nvim_set_option_value("readonly", true, setOptionOpts)
+	vim.api.nvim_set_option_value("modified", false, setOptionOpts)
+end
+
+M.clearTestBuffer = function()
+	modifyTestBuffer(function()
+		vim.api.nvim_buf_set_lines(mainBufferId, 0, -1, false, {})
+	end)
+end
+
+M.open = function()
+	local isBufferVisible = vim.fn.bufwinnr(mainBufferId) ~= -1
+	if mainBufferId == -1 or isBufferVisible == false then
+		vim.api.nvim_command("belowright split 'Test Output'")
+		mainBufferId = vim.api.nvim_get_current_buf()
+        vim.api.nvim_set_option_value('readonly', true, { buf = mainBufferId })
+        vim.api.nvim_set_option_value('swapfile', false, { buf = mainBufferId })
+        vim.api.nvim_create_autocmd("BufDelete", {
+            buffer = mainBufferId,
+            callback = function() mainBufferId = -1 end
+        })
+	end
+
+	if mainBufferId ~= -1 then
+		M.clearTestBuffer()
+	end
+end
+
+--- @param lines Line[] | string[]
+M.appendLinesToTestBuffer = function(lines)
+	if #lines == 0 then
+		return
+	end
+	local isPlainString = type(lines[1]) == "string"
+	modifyTestBuffer(function()
+		--populate buffer with text
+		local textLines = {}
+		if isPlainString then
+			textLines = lines
+		else
+			for _, line in pairs(lines) do
+				textLines[#textLines + 1] = line.text
+			end
+		end
+		vim.api.nvim_buf_set_lines(mainBufferId, -1, -1, false, textLines)
+
+		-- set highlights
+		if isPlainString == false then
+			for i, line in pairs(lines) do
+				if line.highlight ~= nil then
+					vim.api.nvim_buf_add_highlight(
+						mainBufferId,
+						-1,
+						line.highlight.name,
+						i,
+						line.highlight.start,
+						line.highlight.finish
+					)
+				end
+			end
+		end
+	end)
+end
+
+return M

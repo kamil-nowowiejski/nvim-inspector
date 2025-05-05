@@ -1,92 +1,11 @@
-local sut = require('inspector.explorer.testTreeConverter')
+local sut = require('inspector.explorer.lineConverter')
+local mock = require('luassert.mock')
 local assert = require('luassert')
 
-describe('convertTestsToTestsTree', function()
+describe('convertToLines', function()
     it('multiple successes and failures', function()
-        --- @type Test[]
-        local tests = {
-            {
-                namespaceParts = {'Root1', 'Part1', 'Part2'},
-                testName = 'TestOne',
-                duration = '00:00:00.0012265',
-                status = 'success',
-            },
-            {
-                namespaceParts = {'Root1', 'Part1', 'Part2'},
-                testName = 'TestTwo',
-                duration = '00:00:00.009574',
-                status = 'failure',
-                errorMessage = 'I blew up!',
-                stackTrace = {
-                    { line = 'line 1_1_1', isMyCode = false },
-                    { line = 'line 1_1_2', isMyCode = true },
-                    { line = 'line 1_1_3', isMyCode = false },
-                }
-            },
-            {
-                namespaceParts = { 'Root1', 'Part1', 'Part3'},
-                testName = 'TestInBetween',
-                duration = '00:00:00.008346573',
-                status = 'success'
-            },
-            {
-                namespaceParts = {'Root1', 'Part1'},
-                testName = 'TestThree',
-                duration = '00:00:00.087563',
-                status = 'failure',
-                errorMessage = 'kaboom!',
-                stackTrace = {
-                    { line = 'line 1_2_1', isMyCode = false },
-                    { line = 'line 1_2_2', isMyCode = false },
-                    { line = 'line 1_2_3', isMyCode = true },
-                }
-            },
-            {
-                namespaceParts = { 'Root1' },
-                testName = 'TestFour',
-                duration = '00:00:00.095732',
-                status = 'success',
-            },
-            {
-                namespaceParts = { 'Root1' },
-                testName = 'TestFive',
-                duration = '00:00:00.0993539',
-                status = 'success',
-            },
-            {
-                namespaceParts = { 'Root2', 'Namespace1', 'Namespace2' },
-                testName = 'TestSix',
-                duration = '00:00:00.034350',
-                status = 'success',
-            },
-            {
-                namespaceParts = { 'Root2', 'Namespace1', 'Namespace2' },
-                testName = 'TestSeven',
-                duration = '00:00:00.0212435',
-                status = 'failure',
-                errorMessage = 'Expected number 2 but got 4',
-                stackTrace = {
-                    { line = 'line 2_1_1', isMyCode = false },
-                    { line = 'line 2_1_2', isMyCode = false },
-                    { line = 'line 2_1_3', isMyCode = false },
-                }
-            },
-            {
-                namespaceParts = { 'Root2', 'Namespace1' },
-                testName = 'TestEight',
-                duration = '00:00:00.0350462',
-                status = 'failure',
-                errorMessage = 'Expected number empty list',
-                stackTrace = {
-                    { line = 'line 2_2_1', isMyCode = true },
-                    { line = 'line 2_2_2', isMyCode = true },
-                    { line = 'line 2_2_3', isMyCode = true },
-                }
-            },
-        }
-
         --- @type TestsTree
-        local expected = {
+        local input = {
             roots = {
                 {
                     text = 'Root1',
@@ -245,8 +164,89 @@ describe('convertTestsToTestsTree', function()
             }
         }
 
-        local actual = sut.convertTestsToTestsTree(tests)
+        local successHL = { name = "HLInspectorTestSuccess", start = 0, finish = -1 }
+        local failHL = { name = "HLInspectorTestFailed", start = 0, finish = -1 }
 
+        --- @type Line[]
+        local expected = {
+            {
+                text = "V Root1",
+                highlight = failHL,
+                treeNode = input.roots[1]
+            },
+            {
+                text = "  V Part1",
+                highlight = failHL,
+                treeNode = input.roots[1].children[1]
+            },
+            {
+                text = "    V Part2",
+                highlight = failHL,
+                treeNode = input.roots[1].children[1].children[1]
+            },
+            {
+                text = "      ✓ TestOne",
+                highlight = successHL,
+                treeNode = input.roots[1].children[1].children[1].children[1]
+            },
+            {
+                text = "      ✗ TestTwo",
+                highlight = failHL,
+                treeNode = input.roots[1].children[1].children[1].children[2]
+            },
+            {
+                text = "    > Part3",
+                highlight = successHL,
+                treeNode = input.roots[1].children[1].children[2]
+            },
+            {
+                text = "    ✗ TestThree",
+                highlight = failHL,
+                treeNode = input.roots[1].children[1].children[3]
+            },
+            {
+                text = "  ✓ TestFive",
+                highlight = successHL,
+                treeNode = input.roots[1].children[2]
+            },
+            {
+                text = "  ✓ TestFour",
+                highlight = successHL,
+                treeNode = input.roots[1].children[3]
+            },
+            {
+                text = "V Root2",
+                highlight = failHL,
+                treeNode = input.roots[2]
+            },
+            {
+                text = "  V Namespace1",
+                highlight = failHL,
+                treeNode = input.roots[2].children[1]
+            },
+            {
+                text = "    V Namespace2",
+                highlight = failHL,
+                treeNode = input.roots[2].children[1].children[1]
+            },
+            {
+                text = "      ✗ TestSeven",
+                highlight = failHL,
+                treeNode = input.roots[2].children[1].children[1].children[1]
+            },
+            {
+                text = "      ✓ TestSix",
+                highlight = successHL,
+                treeNode = input.roots[2].children[1].children[1].children[2]
+            },
+            {
+                text = "    ✗ TestEight",
+                highlight = failHL,
+                treeNode = input.roots[2].children[1].children[2]
+            }
+        }
+
+        local actual = sut.convertToLines(input)
         assert.are.same(expected, actual)
     end)
 end)

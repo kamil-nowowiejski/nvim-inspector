@@ -2,6 +2,7 @@ local M = {}
 
 local successHihghlightName = "HLInspectorTestSuccess"
 local failureHighlighName = "HLInspectorTestFailed"
+local myCodeHighlighName = "HLInspectorMyCode"
 
 --- @param node TestNameNode
 --- @return string
@@ -33,9 +34,8 @@ end
 --- @param level number
 --- @return string
 local function getLineText(node, level)
-	local nodeType = getmetatable(node).type
     local text = nil
-	if nodeType == "TestNameNode" then
+	if node.nodeType == "test" then
 		--- @cast node TestNameNode
 		text = getTestNameNodeText(node)
 	else
