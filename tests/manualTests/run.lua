@@ -2,6 +2,7 @@
 
 require('tests.manualTests.runtimepath')
 
+require('inspector.colorscheme').registerColors()
 local sut = require('inspector')
 local tests = {
     {
@@ -82,6 +83,36 @@ local tests = {
             { line = 'line 2_2_3', isMyCode = true },
         }
     },
+    {
+        namespaceParts = { 'Big stack trace' },
+        testName = 'Failure with big stack trace',
+        status = 'failure',
+        errorMessage = 'System.InvalidOperationException: The operation cannot be completed because the database connection is in an invalid state. The connection string might be incorrect, or the server may be unavailable. Please check your network connection and ensure the database server is running. If the problem persists, contact your system administrator.',
+        stackTrace = {
+            { line = 'at DataAccess.DatabaseConnection.ExecuteQuery(String query) in C:\\Projects\\EnterpriseApp\\DataAccess\\DatabaseConnection.cs:line 157', isMyCode = true },
+            { line = 'at DataAccess.UserRepository.GetUserByUsername(String username) in C:\\Projects\\EnterpriseApp\\DataAccess\\UserRepository.cs:line 42', isMyCode = true },
+            { line = 'at BusinessLogic.AuthenticationService.ValidateUser(String username, String password) in C:\\Projects\\EnterpriseApp\\BusinessLogic\\AuthenticationService.cs:line 78', isMyCode = true },
+            { line = 'at BusinessLogic.LoginManager.ProcessLogin(LoginRequest request) in C:\\Projects\\EnterpriseApp\\BusinessLogic\\LoginManager.cs:line 103', isMyCode = true },
+            { line = 'at API.Controllers.AuthController.Login(LoginViewModel model) in C:\\Projects\\EnterpriseApp\\API\\Controllers\\AuthController.cs:line 55', isMyCode = true },
+            { line = 'at lambda_method(Closure , Object , Object[] )', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)', isMyCode = false },
+            { line = 'at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)', isMyCode = false },
+        }
+    }
 }
 
 sut.showTests(tests)

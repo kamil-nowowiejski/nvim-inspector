@@ -9,7 +9,7 @@
 --- @field stackTrace StackTraceLine[] | nil applicable only if test failed
 
 --- @class StackTraceLine 
---- @filed line string
+--- @field line string
 --- @field isMyCode boolean
 
 ---- Internal tests tree representation
@@ -28,7 +28,7 @@
 --- @class TestNameNode : TestTreeNode
 --- @field duration string
 --- @field errorMessage string | nil applicable only if test failed
---- @field stackTrace string[] | nil applicable only if test failed
+--- @field stackTrace StackTraceLine[] | nil applicable only if test failed
 
 ---- Internal representation of buffer lines
 --- @class Line

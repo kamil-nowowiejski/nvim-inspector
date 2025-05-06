@@ -1,8 +1,6 @@
 local M = {}
 
-local successHihghlightName = "HLInspectorTestSuccess"
-local failureHighlighName = "HLInspectorTestFailed"
-local myCodeHighlighName = "HLInspectorMyCode"
+local highlights = require('inspector.colorscheme.highlights')
 
 --- @param node TestNameNode
 --- @return string
@@ -53,9 +51,9 @@ end
 local function getHighlight(node)
 	local hlName = ""
 	if node.status == "success" then
-		hlName = successHihghlightName
+		hlName = highlights.HLInspectorTestTreeTestSuccess
 	else
-		hlName = failureHighlighName
+		hlName = highlights.HLInspectorTestTreeTestFailed
 	end
 	return {
 		name = hlName,
