@@ -4,9 +4,9 @@ M.namespace = vim.api.nvim_create_namespace('InspectorHighlights')
 M.extMarkNamespace = vim.api.nvim_create_namespace('InspectorExtMarks')
 M.TestTreeTestSuccess = 'TestTreeTestSuccess'
 M.TestTreeTestFailed = 'TestTreeTestFailed'
-M.StackTraceEvenLine = 'StackTraceEvenLine'
-M.StackTraceOddLine = 'StackTraceOddLine'
 M.StackTraceMyCode = 'StackTraceMyCode'
+M.StackTraceLine = 'StackTraceLine'
+M.StackTraceNotMyCode = 'StackTraceNotMyCode'
 M.StackTraceErrorMessage = 'StackTraceErrorMessage'
 M.StackTraceCursorLine = 'StackTraceCursorLine'
 
@@ -18,13 +18,14 @@ M.groups = {
         fg = "#ED0004",
     },
 
-    StackTraceEvenLine = {
-        fg = "#7DAEA3",
-    },
-    StackTraceOddLine = {
+    StackTraceLine = {
         fg = "#7DAEA3",
     },
     StackTraceMyCode = {
+        fg = "#7DAEA3",
+    },
+    StackTraceNotMyCode = {
+        fg = "#D4BE98"
     },
     StackTraceErrorMessage = {
         fg = "#ed4c4c",

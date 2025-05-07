@@ -17,11 +17,7 @@ describe('convertTestsToTestsTree', function()
                 duration = '00:00:00.009574',
                 status = 'failure',
                 errorMessage = 'I blew up!',
-                stackTrace = {
-                    { line = 'line 1_1_1', isMyCode = false },
-                    { line = 'line 1_1_2', isMyCode = true },
-                    { line = 'line 1_1_3', isMyCode = false },
-                }
+                stackTrace = { 'line 1_1_1', 'line 1_1_2', 'line 1_1_3', }
             },
             {
                 namespaceParts = { 'Root1', 'Part1', 'Part3'},
@@ -35,11 +31,7 @@ describe('convertTestsToTestsTree', function()
                 duration = '00:00:00.087563',
                 status = 'failure',
                 errorMessage = 'kaboom!',
-                stackTrace = {
-                    { line = 'line 1_2_1', isMyCode = false },
-                    { line = 'line 1_2_2', isMyCode = false },
-                    { line = 'line 1_2_3', isMyCode = true },
-                }
+                stackTrace = { 'line 1_2_1', 'line 1_2_2', 'line 1_2_3', }
             },
             {
                 namespaceParts = { 'Root1' },
@@ -65,11 +57,7 @@ describe('convertTestsToTestsTree', function()
                 duration = '00:00:00.0212435',
                 status = 'failure',
                 errorMessage = 'Expected number 2 but got 4',
-                stackTrace = {
-                    { line = 'line 2_1_1', isMyCode = false },
-                    { line = 'line 2_1_2', isMyCode = false },
-                    { line = 'line 2_1_3', isMyCode = false },
-                }
+                stackTrace = { 'line 2_1_1', 'line 2_1_2', 'line 2_1_3', }
             },
             {
                 namespaceParts = { 'Root2', 'Namespace1' },
@@ -77,11 +65,7 @@ describe('convertTestsToTestsTree', function()
                 duration = '00:00:00.0350462',
                 status = 'failure',
                 errorMessage = 'Expected number empty list',
-                stackTrace = {
-                    { line = 'line 2_2_1', isMyCode = true },
-                    { line = 'line 2_2_2', isMyCode = true },
-                    { line = 'line 2_2_3', isMyCode = true },
-                }
+                stackTrace = { 'line 2_2_1', 'line 2_2_2', 'line 2_2_3', }
             },
         }
 
@@ -122,11 +106,7 @@ describe('convertTestsToTestsTree', function()
                                             status = 'failure',
                                             isExpanded = false,
                                             errorMessage = 'I blew up!',
-                                            stackTrace = {
-                                                { line = 'line 1_1_1', isMyCode = false },
-                                                { line = 'line 1_1_2', isMyCode = true },
-                                                { line = 'line 1_1_3', isMyCode = false },
-                                            },
+                                            stackTrace = { 'line 1_1_1', 'line 1_1_2', 'line 1_1_3', },
                                             nodeType = 'test',
                                             children = {}
                                         },
@@ -154,11 +134,7 @@ describe('convertTestsToTestsTree', function()
                                     status = 'failure',
                                     isExpanded = false,
                                     errorMessage = 'kaboom!',
-                                    stackTrace = {
-                                        { line = 'line 1_2_1', isMyCode = false },
-                                        { line = 'line 1_2_2', isMyCode = false },
-                                        { line = 'line 1_2_3', isMyCode = true },
-                                    },
+                                    stackTrace = { 'line 1_2_1', 'line 1_2_2', 'line 1_2_3', },
                                     nodeType = 'test',
                                     children = {}
                                 }
@@ -206,11 +182,7 @@ describe('convertTestsToTestsTree', function()
                                             status = 'failure',
                                             isExpanded = false,
                                             errorMessage = 'Expected number 2 but got 4',
-                                            stackTrace = {
-                                                { line = 'line 2_1_1', isMyCode = false },
-                                                { line = 'line 2_1_2', isMyCode = false },
-                                                { line = 'line 2_1_3', isMyCode = false },
-                                            },
+                                            stackTrace = { 'line 2_1_1', 'line 2_1_2', 'line 2_1_3', },
                                             nodeType = 'test',
                                             children = {}
                                         },
@@ -230,11 +202,7 @@ describe('convertTestsToTestsTree', function()
                                     status = 'failure',
                                     isExpanded = false,
                                     errorMessage = 'Expected number empty list',
-                                    stackTrace = {
-                                        { line = 'line 2_2_1', isMyCode = true },
-                                        { line = 'line 2_2_2', isMyCode = true },
-                                        { line = 'line 2_2_3', isMyCode = true },
-                                    },
+                                    stackTrace = { 'line 2_2_1', 'line 2_2_2', 'line 2_2_3', },
                                     nodeType = 'test',
                                     children = {}
                                 }

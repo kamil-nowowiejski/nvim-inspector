@@ -63,8 +63,7 @@ local function parseTest(unitTestResult)
 		if unitTestResult.Output ~= nil then
             local splitStackTrace = vim.split(unitTestResult.Output.ErrorInfo.StackTrace, '\r\n')
 			for _, stackTraceLine in ipairs(splitStackTrace) do
-                --- @type StackTraceLine
-                local line = { line = stackTraceLine:gsub("^%s*(.-)%s*$", "%1"), isMyCode = false }
+                local line = stackTraceLine:gsub("^%s*(.-)%s*$", "%1")
                 table.insert(stackTrace, line)
             end
             return stackTrace

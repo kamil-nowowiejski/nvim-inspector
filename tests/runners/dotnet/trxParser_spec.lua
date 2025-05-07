@@ -87,18 +87,9 @@ describe('parse trx', function()
                 namespaceParts = {'Test', 'AnotherTest'},
                 errorMessage = 'System.Exception : another failure',
                 stackTrace = {
-                    {
-                        line = 'at Test.AnotherTest.ThisAlsoFails() in C:\\GitRepos\\timesheeter\\test\\AnotherTest.cs:line 14',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
-                        isMyCode = false
-                    }
+                    'at Test.AnotherTest.ThisAlsoFails() in C:\\GitRepos\\timesheeter\\test\\AnotherTest.cs:line 14',
+                    'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
+                    'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
                 }
             },
             {
@@ -114,18 +105,9 @@ describe('parse trx', function()
                 namespaceParts = {'Test', 'QuickTest'},
                 errorMessage = 'System.Exception : critical failure',
                 stackTrace = {
-                    {
-                        line = 'at Test.QuickTest.ThisOneFails() in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 8',
-                        isMyCode = false,
-                    },
-                    {
-                        line = 'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
-                        isMyCode = false
-                    }
+                    'at Test.QuickTest.ThisOneFails() in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 8',
+                    'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
+                    'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
                 }
             },
             {
@@ -135,18 +117,9 @@ describe('parse trx', function()
                 namespaceParts = {'Test', 'AnotherTest'},
                 errorMessage = 'System.Exception : kaboom!',
                 stackTrace = {
-                    {
-                        line = 'at Test.AnotherTest.ThisOneFails() in C:\\GitRepos\\timesheeter\\test\\AnotherTest.cs:line 8',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
-                        isMyCode = false
-                    }
+                    'at Test.AnotherTest.ThisOneFails() in C:\\GitRepos\\timesheeter\\test\\AnotherTest.cs:line 8',
+                    'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
+                    'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
                 }
             },
             {
@@ -162,18 +135,9 @@ describe('parse trx', function()
                 namespaceParts = {'Test', 'QuickTest'},
                 errorMessage = 'System.Exception : fail',
                 stackTrace = {
-                    {
-                        line = 'at Test.QuickTest.Run(Int32 index, String animal) in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 17',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)',
-                        isMyCode = false
-                    },
+                    'at Test.QuickTest.Run(Int32 index, String animal) in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 17',
+                    'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
+                    'at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)',
                 }
             },
         }
@@ -192,18 +156,9 @@ describe('parse trx', function()
                 namespaceParts = {'Test', 'QuickTest'},
                 errorMessage = 'System.Exception : critical failure',
                 stackTrace = {
-                    {
-                        line = 'at Test.QuickTest.ThisOneFails() in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 8',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
-                        isMyCode = false
-                    },
+                    'at Test.QuickTest.ThisOneFails() in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 8',
+                    'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
+                    'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
                 }
             }
         }
@@ -238,18 +193,9 @@ describe('parse trx', function()
                 namespaceParts = {'Test', 'QuickTest'},
                 errorMessage = 'System.Exception : critical failure',
                 stackTrace = {
-                    {
-                        line = 'at Test.QuickTest.ThisOneFails() in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 8',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
-                        isMyCode = false
-                    },
+                    'at Test.QuickTest.ThisOneFails() in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 8',
+                    'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
+                    'at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)',
                 }
             },
             {
@@ -265,18 +211,9 @@ describe('parse trx', function()
                 namespaceParts = {'Test', 'QuickTest'},
                 errorMessage = 'System.Exception : fail',
                 stackTrace = {
-                    {
-                        line = 'at Test.QuickTest.Run(Int32 index, String animal) in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 17',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
-                        isMyCode = false
-                    },
-                    {
-                        line = 'at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)',
-                        isMyCode = false
-                    },
+                    'at Test.QuickTest.Run(Int32 index, String animal) in C:\\GitRepos\\timesheeter\\test\\QuickTest.cs:line 17',
+                    'at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)',
+                    'at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)',
                 }
             },
             {

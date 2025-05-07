@@ -2,21 +2,24 @@ local M = { }
 
 local highlights = require('inspector.colorscheme.highlights')
 local cursorLineExtmarkId = -1
-local function setHighlights(buf)
+
+--- @param buf integer
+--- @param stackTrace string[]
+local function setHighlights(buf, stackTrace)
     vim.hl.range(buf, highlights.namespace, highlights.StackTraceErrorMessage, {0, 0}, {0, -1})
 
-    local linesCount = vim.api.nvim_buf_line_count(buf)
-    for i=2,linesCount,1 do
-        local hlName = nil
-        if i%2 == 0 then
-            hlName = highlights.StackTraceEvenLine
-        else
-            hlName = highlights.StackTraceOddLine
+    local isMyCodeResolver = require('inspector.explorer.isMyCodeResolver')
+    for i, line in ipairs(stackTrace) do
+        local lineNumber = i + 1
+        vim.hl.range(buf, highlights.namespace, highlights.StackTraceLine, {lineNumber, 0}, {lineNumber, -1})
+
+        local stackTraceFileRef = isMyCodeResolver.resolve(line, vim.fn.getcwd())
+        if stackTraceFileRef ~= nil then
+            vim.hl.range(buf, highlights.namespace, highlights.StackTraceMyCode,
+                {lineNumber, stackTraceFileRef.highlight.start},
+                {lineNumber, stackTraceFileRef.highlight.finish})
         end
-        vim.hl.range(buf, highlights.namespace, hlName, {i, 0}, {i, -1})
     end
-
-
 end
 
 --- @param testNode TestNameNode
@@ -28,7 +31,7 @@ M.show = function(testNode)
     local tempBuffer = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_buf_set_lines(tempBuffer, 0, -1, false, testDetailsLines)
 
-    setHighlights(tempBuffer)
+    setHighlights(tempBuffer, testNode.stackTrace)
 
     local sizeFactor = 0.8
     local width = math.floor(vim.o.columns * sizeFactor)

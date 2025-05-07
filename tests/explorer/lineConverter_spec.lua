@@ -1,5 +1,4 @@
 local sut = require('inspector.explorer.lineConverter')
-local mock = require('luassert.mock')
 local assert = require('luassert')
 
 describe('convertToLines', function()
@@ -41,11 +40,7 @@ describe('convertToLines', function()
                                             status = 'failure',
                                             isExpanded = false,
                                             errorMessage = 'I blew up!',
-                                            stackTrace = {
-                                                { line = 'line 1_1_1', isMyCode = false },
-                                                { line = 'line 1_1_2', isMyCode = true },
-                                                { line = 'line 1_1_3', isMyCode = false },
-                                            },
+                                            stackTrace = { 'line 1_1_1', 'line 1_1_2', 'line 1_1_3', },
                                             nodeType = 'test',
                                             children = {}
                                         },
@@ -73,11 +68,7 @@ describe('convertToLines', function()
                                     status = 'failure',
                                     isExpanded = false,
                                     errorMessage = 'kaboom!',
-                                    stackTrace = {
-                                        { line = 'line 1_2_1', isMyCode = false },
-                                        { line = 'line 1_2_2', isMyCode = false },
-                                        { line = 'line 1_2_3', isMyCode = true },
-                                    },
+                                    stackTrace = { 'line 1_2_1', 'line 1_2_2', 'line 1_2_3', },
                                     nodeType = 'test',
                                     children = {}
                                 }
@@ -125,11 +116,7 @@ describe('convertToLines', function()
                                             status = 'failure',
                                             isExpanded = false,
                                             errorMessage = 'Expected number 2 but got 4',
-                                            stackTrace = {
-                                                { line = 'line 2_1_1', isMyCode = false },
-                                                { line = 'line 2_1_2', isMyCode = false },
-                                                { line = 'line 2_1_3', isMyCode = false },
-                                            },
+                                            stackTrace = { 'line 2_1_1', 'line 2_1_2', 'line 2_1_3', },
                                             nodeType = 'test',
                                             children = {}
                                         },
@@ -149,11 +136,7 @@ describe('convertToLines', function()
                                     status = 'failure',
                                     isExpanded = false,
                                     errorMessage = 'Expected number empty list',
-                                    stackTrace = {
-                                        { line = 'line 2_2_1', isMyCode = true },
-                                        { line = 'line 2_2_2', isMyCode = true },
-                                        { line = 'line 2_2_3', isMyCode = true },
-                                    },
+                                    stackTrace = { 'line 2_2_1', 'line 2_2_2', 'line 2_2_3', },
                                     nodeType = 'test',
                                     children = {}
                                 }

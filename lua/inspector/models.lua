@@ -6,11 +6,17 @@
 --- @field status "success" | "failure"
 --- @field duration string
 --- @field errorMessage string | nil applicable only if test failed
---- @field stackTrace StackTraceLine[] | nil applicable only if test failed
+--- @field stackTrace string[] | nil applicable only if test failed
 
---- @class StackTraceLine 
---- @field line string
---- @field isMyCode boolean
+
+--- @class StackTraceFileRef
+--- @field fileName string
+--- @field line number?
+--- @field highlight StackTraceFileRefHighlight
+
+--- @class StackTraceFileRefHighlight
+--- @field start number
+--- @field finish number
 
 ---- Internal tests tree representation
 --- @class TestsTree
@@ -28,7 +34,7 @@
 --- @class TestNameNode : TestTreeNode
 --- @field duration string
 --- @field errorMessage string | nil applicable only if test failed
---- @field stackTrace StackTraceLine[] | nil applicable only if test failed
+--- @field stackTrace string[] | nil applicable only if test failed
 
 ---- Internal representation of buffer lines
 --- @class Line
