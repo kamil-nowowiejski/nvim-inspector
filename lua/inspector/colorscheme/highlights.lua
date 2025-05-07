@@ -6,7 +6,6 @@ M.TestTreeTestSuccess = 'TestTreeTestSuccess'
 M.TestTreeTestFailed = 'TestTreeTestFailed'
 M.StackTraceMyCode = 'StackTraceMyCode'
 M.StackTraceLine = 'StackTraceLine'
-M.StackTraceNotMyCode = 'StackTraceNotMyCode'
 M.StackTraceErrorMessage = 'StackTraceErrorMessage'
 M.StackTraceCursorLine = 'StackTraceCursorLine'
 
@@ -15,17 +14,14 @@ M.groups = {
         fg = "#32a852",
     },
     TestTreeTestFailed = {
-        fg = "#ED0004",
+        fg = "#ed4c4c",
     },
 
     StackTraceLine = {
         fg = "#7DAEA3",
     },
     StackTraceMyCode = {
-        fg = "#7DAEA3",
-    },
-    StackTraceNotMyCode = {
-        fg = "#D4BE98"
+        fg = "#6C74AE",
     },
     StackTraceErrorMessage = {
         fg = "#ed4c4c",

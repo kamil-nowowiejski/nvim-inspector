@@ -21,7 +21,7 @@ local function tryMatchPattern(line, projectDir, pattern)
         line = tonumber(lineNumber),
         highlight = {
             start = highlightStart,
-            finish = -1
+            finish = #line
         }
     }
 end

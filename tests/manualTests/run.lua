@@ -2,6 +2,9 @@
 
 require('tests.manualTests.runtimepath')
 
+local stub = require('luassert.stub')
+stub(vim.fn, "getcwd", 'C:\\Projects\\EnterpriseApp')
+
 require('inspector.colorscheme').registerColors()
 local sut = require('inspector')
 local tests = {
@@ -97,7 +100,7 @@ local tests = {
             'at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)',
             'at This.Is.My.Code.Invoke(HttpContext context)',
         }
-    }
+    },
 }
 
 sut.showTests(tests)

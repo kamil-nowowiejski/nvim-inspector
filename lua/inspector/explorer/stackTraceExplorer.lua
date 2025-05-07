@@ -3,22 +3,42 @@ local M = { }
 local highlights = require('inspector.colorscheme.highlights')
 local cursorLineExtmarkId = -1
 
+--- @type { [number]: StackTraceFileRef } key is the line number (1-based)
+local fileRefs = nil
+
 --- @param buf integer
 --- @param stackTrace string[]
 local function setHighlights(buf, stackTrace)
     vim.hl.range(buf, highlights.namespace, highlights.StackTraceErrorMessage, {0, 0}, {0, -1})
 
     local isMyCodeResolver = require('inspector.explorer.isMyCodeResolver')
+    fileRefs = {}
     for i, line in ipairs(stackTrace) do
         local lineNumber = i + 1
         vim.hl.range(buf, highlights.namespace, highlights.StackTraceLine, {lineNumber, 0}, {lineNumber, -1})
 
         local stackTraceFileRef = isMyCodeResolver.resolve(line, vim.fn.getcwd())
         if stackTraceFileRef ~= nil then
+            fileRefs[lineNumber] = stackTraceFileRef
             vim.hl.range(buf, highlights.namespace, highlights.StackTraceMyCode,
-                {lineNumber, stackTraceFileRef.highlight.start},
+                {lineNumber, stackTraceFileRef.highlight.start - 1},
                 {lineNumber, stackTraceFileRef.highlight.finish})
         end
+    end
+end
+
+local function goToFile(winId)
+    local lineNumber = vim.api.nvim_win_get_cursor(0)[1] - 1
+    local fileRef = fileRefs[lineNumber]
+    if fileRef == nil then return end
+
+    local fileExists = vim.fn.filereadable(fileRef.fileName) == 1
+    if fileExists == false then
+        error('File not foud')
+    else
+        vim.api.nvim_win_close(winId, true)
+        vim.cmd('e '..fileRef.fileName)
+        vim.api.nvim_win_set_cursor(0, {fileRef.line, 0})
     end
 end
 
@@ -26,7 +46,7 @@ end
 M.show = function(testNode)
     local testDetailsLines = { testNode.errorMessage, "" }
     for _, stackTraceLine in ipairs(testNode.stackTrace) do
-        table.insert(testDetailsLines, #testDetailsLines + 1, stackTraceLine.line)
+        table.insert(testDetailsLines, #testDetailsLines + 1, stackTraceLine)
     end
     local tempBuffer = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_buf_set_lines(tempBuffer, 0, -1, false, testDetailsLines)
@@ -57,6 +77,8 @@ M.show = function(testNode)
     vim.api.nvim_set_option_value('signcolumn', 'no', winOpts)
     vim.api.nvim_set_option_value('cursorline', false, winOpts)
     vim.api.nvim_set_option_value('linebreak', true, winOpts)
+
+    vim.keymap.set("n", "<CR>", function() goToFile(winId) end, { buffer = tempBuffer })
 
     vim.api.nvim_create_autocmd('BufLeave', {
         buffer = tempBuffer,
