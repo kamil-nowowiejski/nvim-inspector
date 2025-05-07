@@ -1,37 +1,45 @@
 local M = { }
 
-M.HLInspectorTestTreeTestSuccess = 'HLInspectorTestTreeTestSuccess'
-M.HLInspectorTestTreeTestFailed = 'HLInspectorTestTreeTestFailed'
-M.HLInspectorStackTraceEvenLine = 'HLInspectorStackTraceEvenLine'
-M.HLInspectorStackTraceOddLine = 'HLInspectorStackTraceOddLine'
-M.HLInspectorStackTraceMyCode = 'HLInspectorStackTraceMyCode'
-M.HLInspectorStackTraceErrorMessage = 'HLInspectorStackTraceErrorMessage'
-M.HLInspectorStackTraceCursorLine = 'HLInspectorStackTraceCursorLine'
-M.HLInspectorStackTraceNormalFloat = 'HLInspectorStackTraceNormalFloat'
+M.namespace = vim.api.nvim_create_namespace('InspectorHighlights')
+M.extMarkNamespace = vim.api.nvim_create_namespace('InspectorExtMarks')
+M.TestTreeTestSuccess = 'TestTreeTestSuccess'
+M.TestTreeTestFailed = 'TestTreeTestFailed'
+M.StackTraceEvenLine = 'StackTraceEvenLine'
+M.StackTraceOddLine = 'StackTraceOddLine'
+M.StackTraceMyCode = 'StackTraceMyCode'
+M.StackTraceErrorMessage = 'StackTraceErrorMessage'
+M.StackTraceCursorLine = 'StackTraceCursorLine'
 
 M.groups = {
-    HLInspectorTestTreeTestSuccess = {
+    TestTreeTestSuccess = {
         fg = "#32a852",
     },
-    HLInspectorTestTreeTestFailed = {
-        fg = "#fc0303",
+    TestTreeTestFailed = {
+        fg = "#ED0004",
     },
-    HLInspectorStackTraceEvenLine = {
+
+    StackTraceEvenLine = {
         fg = "#7DAEA3",
     },
-    HLInspectorStackTraceOddLine = {
+    StackTraceOddLine = {
         fg = "#7DAEA3",
     },
-    HLInspectorStackTraceMyCode = {
+    StackTraceMyCode = {
     },
-    HLInspectorStackTraceErrorMessage = {
+    StackTraceErrorMessage = {
         fg = "#ed4c4c",
     },
-    HLInspectorStackTraceCursorLine = {
-        -- bg = "#000000"
+    StackTraceCursorLine = {
+        bg = "#363636"
     },
-    HLInspectorStackTraceNormalFloat = {
-        bg = '#000000'
+
+    NormalFloat = {
+        bg = '#0f0f0f',
+        fg = '#ABA09D'
+    },
+    FloatBorder = {
+        bg = '#0f0f0f',
+        fg = '#ABA09D'
     }
 }
 

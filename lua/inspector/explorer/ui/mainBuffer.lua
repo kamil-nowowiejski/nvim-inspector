@@ -2,16 +2,18 @@ local M = {}
 
 --- @type number
 local mainBufferId = -1
+local highlights = require('inspector.colorscheme.highlights')
+
 M.getId = function() return mainBufferId end
 
 local function modifyTestBuffer(modifyFunction)
-	local setOptionOpts = {
+	local opts = {
 		buf = mainBufferId,
 	}
-	vim.api.nvim_set_option_value("readonly", false, setOptionOpts)
+	vim.api.nvim_set_option_value("readonly", false, opts)
 	modifyFunction()
-	vim.api.nvim_set_option_value("readonly", true, setOptionOpts)
-	vim.api.nvim_set_option_value("modified", false, setOptionOpts)
+	vim.api.nvim_set_option_value("readonly", true, opts)
+	vim.api.nvim_set_option_value("modified", false, opts)
 end
 
 M.clearTestBuffer = function()
@@ -22,17 +24,38 @@ M.clearTestBuffer = function()
     end
 end
 
+local function setHighlightNamespace()
+    local winId = vim.fn.bufwinid(mainBufferId)
+    vim.api.nvim_win_set_hl_ns(winId, highlights.namespace)
+end
+
+local function setWindowOptions()
+    local winId = vim.fn.bufwinid(mainBufferId)
+    vim.api.nvim_set_option_value('spell', false, { win = winId } )
+end
+
 M.open = function()
-	local isBufferVisible = vim.fn.bufwinnr(mainBufferId) ~= -1
+	local isBufferVisible = vim.fn.bufwinid(mainBufferId) ~= -1
 	if mainBufferId == -1 or isBufferVisible == false then
 		vim.api.nvim_command("belowright split 'Test Output'")
 		mainBufferId = vim.api.nvim_get_current_buf()
-        vim.api.nvim_set_option_value('readonly', true, { buf = mainBufferId })
-        vim.api.nvim_set_option_value('swapfile', false, { buf = mainBufferId })
+        local opts = { buf = mainBufferId }
+        vim.api.nvim_set_option_value('readonly', true, opts)
+        vim.api.nvim_set_option_value('swapfile', false, opts)
+
         vim.api.nvim_create_autocmd("BufDelete", {
             buffer = mainBufferId,
             callback = function() mainBufferId = -1 end
         })
+        vim.api.nvim_create_autocmd('BufWinEnter', {
+            buffer = mainBufferId,
+            callback = function()
+                setWindowOptions()
+                setHighlightNamespace()
+            end
+        })
+        setWindowOptions()
+        setHighlightNamespace()
 	end
 
 	if mainBufferId ~= -1 then
@@ -62,14 +85,7 @@ M.appendLinesToTestBuffer = function(lines)
 		if isPlainString == false then
 			for i, line in pairs(lines) do
 				if line.highlight ~= nil then
-					vim.api.nvim_buf_add_highlight(
-						mainBufferId,
-						-1,
-						line.highlight.name,
-						i,
-						line.highlight.start,
-						line.highlight.finish
-					)
+                    vim.hl.range(mainBufferId, highlights.namespace, line.highlight.name, {i, line.highlight.start}, {i, line.highlight.finish})
 				end
 			end
 		end

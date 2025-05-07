@@ -3,7 +3,7 @@ local M = {}
 M.registerColors = function()
     local highlights = require('inspector.colorscheme.highlights')
     for group, options in pairs(highlights.groups) do
-        vim.api.nvim_set_hl(0, group, options)
+        vim.api.nvim_set_hl(highlights.namespace, group, options)
     end
 end
 

@@ -51,9 +51,9 @@ end
 local function getHighlight(node)
 	local hlName = ""
 	if node.status == "success" then
-		hlName = highlights.HLInspectorTestTreeTestSuccess
+		hlName = highlights.TestTreeTestSuccess
 	else
-		hlName = highlights.HLInspectorTestTreeTestFailed
+		hlName = highlights.TestTreeTestFailed
 	end
 	return {
 		name = hlName,

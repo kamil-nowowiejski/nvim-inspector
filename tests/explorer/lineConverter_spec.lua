@@ -164,8 +164,9 @@ describe('convertToLines', function()
             }
         }
 
-        local successHL = { name = "HLInspectorTestSuccess", start = 0, finish = -1 }
-        local failHL = { name = "HLInspectorTestFailed", start = 0, finish = -1 }
+        local highlights = require('inspector.colorscheme.highlights')
+        local successHL = { name = highlights.TestTreeTestSuccess, start = 0, finish = -1 }
+        local failHL = { name = highlights.TestTreeTestFailed, start = 0, finish = -1 }
 
         --- @type Line[]
         local expected = {

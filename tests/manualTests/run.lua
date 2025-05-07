@@ -1,4 +1,4 @@
--- to run this test put ":source" in vim command
+-- to run this test put ":source" in vim command run
 
 require('tests.manualTests.runtimepath')
 
