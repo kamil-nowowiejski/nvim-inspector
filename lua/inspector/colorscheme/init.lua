@@ -12,6 +12,7 @@ M.setup = function()
         pattern = "*",
         callback = M.registerColors,
     })
+    M.registerColors()
 end
 
 return M

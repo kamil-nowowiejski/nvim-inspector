@@ -1,9 +1,5 @@
 local M = {}
 
-local function getVimTestStrategies()
-    return vim.g["test#custom_strategies"]
-end
-
 local function setupAutocommands(keymapsSetup, filePattern)
     vim.api.nvim_create_autocmd("BufEnter", {
         pattern = filePattern,
@@ -24,13 +20,6 @@ local function setupAutocommands(keymapsSetup, filePattern)
 end
 
 local function setupDotnetStrategies()
-    local dotnetRunner = require('inspector.runners.dotnet.runner')
-    dotnetRunner.setup()
-
-    local strategies = getVimTestStrategies()
-    strategies.dotnetRun = dotnetRunner.run
-    strategies.dotnetDebug = dotnetRunner.debug
-
     local function setupDotnetKeymaps(ev)
         vim.keymap.set("n", "<leader>tn", "<cmd>TestNearest -strategy=dotnetRun<cr>", { buffer = ev.buf})
         vim.keymap.set("n", "<leader>dn", "<cmd>TestNearest -strategy=dotnetDebug<cr>", { buffer = ev.buf})
@@ -40,12 +29,6 @@ local function setupDotnetStrategies()
 end
 
 local function setupJavascriptStrategies()
-    local jsRunner = require('inspector.runners.javascript.runner')
-
-    local strategies = getVimTestStrategies()
-    strategies.jsRun = jsRunner.run
-    strategies.jsDebug = jsRunner.debug
-
     local function setupJavascriptKeymaps(ev)
         vim.keymap.set("n", "<leader>tn", "<cmd>TestNearest -strategy=jsRun<cr>", { buffer = ev.buf})
         vim.keymap.set("n", "<leader>dn", "<cmd>TestNearest -strategy=jsDebug<cr>", { buffer = ev.buf})
@@ -55,6 +38,17 @@ local function setupJavascriptStrategies()
 end
 
 M.setupVimTest = function()
+    local dotnetRunner = require('inspector.runners.dotnet.runner')
+    dotnetRunner.setup()
+    local jsRunner = require('inspector.runners.javascript.runner')
+
+    vim.g["test#custom_strategies"] = {
+        dotnetRun = dotnetRunner.run,
+        dotnetDebug = dotnetRunner.debug,
+        jsRun = jsRunner.run,
+        jsDebug = jsRunner.debug
+    }
+
     setupDotnetStrategies()
     setupJavascriptStrategies()
 end

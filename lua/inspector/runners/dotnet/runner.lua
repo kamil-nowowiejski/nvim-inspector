@@ -1,6 +1,6 @@
 local M = {}
 
-local lastTestRunTrxFile = vim.fn.stdpath("data") .. "/LastTestRun.trx"
+local lastTestRunTrxFile = vim.fn.stdpath("data") .. "\\LastTestRun.trx"
 
 
 M.setup = function()
@@ -13,18 +13,19 @@ M.setup = function()
 end
 
 M.run = function(vimTestCmd)
-	local testExplorer = require("plugins.vimtest.testexplorer")
+	local testExplorer = require('inspector.explorer')
 	testExplorer.open()
 
-    local utils = require('plugins.vimtest.utils')
+    local utils = require('inspector.runners.utils')
 	local cmd = utils.parseCmd(vimTestCmd)
     table.insert(cmd, "--no-restore")
 	table.insert(cmd, "--logger")
 	table.insert(cmd, "trx;LogFileName=" .. lastTestRunTrxFile)
+    print(vim.inspect(cmd))
 
 	local onExit = function()
 		vim.schedule(function()
-			local trxParser = require("plugins.vimtest.trxparser")
+			local trxParser = require("inspector.runners.dotnet.trxParser")
 			local tests = trxParser.parse(lastTestRunTrxFile)
 			testExplorer.open()
 			testExplorer.showTests(tests)

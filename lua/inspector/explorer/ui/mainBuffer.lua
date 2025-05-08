@@ -37,17 +37,27 @@ end
 M.open = function()
 	local isBufferVisible = vim.fn.bufwinid(mainBufferId) ~= -1
 	if mainBufferId == -1 or isBufferVisible == false then
+        print('lets go')
 		vim.api.nvim_command("belowright split 'Test Output'")
 		mainBufferId = vim.api.nvim_get_current_buf()
         local opts = { buf = mainBufferId }
         vim.api.nvim_set_option_value('readonly', true, opts)
         vim.api.nvim_set_option_value('swapfile', false, opts)
 
+        local autocmdGroup = vim.api.nvim_create_augroup('InspctorMainBufferAutocmdGroup', {
+            clear = true
+        })
+
         vim.api.nvim_create_autocmd("BufDelete", {
+            group = autocmdGroup,
             buffer = mainBufferId,
-            callback = function() mainBufferId = -1 end
+            callback = function()
+                vim.api.nvim_del_augroup_by_id(autocmdGroup)
+                mainBufferId = -1
+            end
         })
         vim.api.nvim_create_autocmd('BufWinEnter', {
+            group = autocmdGroup,
             buffer = mainBufferId,
             callback = function()
                 setWindowOptions()
