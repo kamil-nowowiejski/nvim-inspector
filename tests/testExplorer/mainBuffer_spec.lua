@@ -1,4 +1,4 @@
-local sut = require('inspector.explorer.ui.mainBuffer')
+local sut = require('inspector.testExplorer.mainBuffer')
 local mock = require('luassert.mock')
 local assert = require('luassert')
 

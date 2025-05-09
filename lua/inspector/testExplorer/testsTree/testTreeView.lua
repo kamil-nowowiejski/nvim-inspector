@@ -1,6 +1,6 @@
 local M = {}
 
-local mainBuffer = require('inspector.explorer.ui.mainBuffer')
+local mainBuffer = require('inspector.testExplorer.mainBuffer')
 
 --- @type TestsTree
 local testsTree = nil
@@ -9,7 +9,7 @@ local testsTree = nil
 local lines = nil
 
 local function redrawTree()
-    lines = require('inspector.explorer.lineConverter').convertToLines(testsTree)
+    lines = require('inspector.testExplorer.testsTree.lineConverter').convertToLines(testsTree)
 	mainBuffer.clearTestBuffer()
 	mainBuffer.appendLinesToTestBuffer(lines)
 end
@@ -38,7 +38,7 @@ local function handleOpenTestDetails()
         return
     end
 
-    local stackTraceExplorer = require('inspector.explorer.stackTraceExplorer')
+    local stackTraceExplorer = require('inspector.testExplorer.stackTrace')
     stackTraceExplorer.show(selectedNode)
 end
 
@@ -49,7 +49,7 @@ end
 
 --- @param tests Test[]
 M.showTests = function(tests)
-    testsTree = require('inspector.explorer.testTreeConverter').convertTestsToTestsTree(tests)
+    testsTree = require('inspector.testExplorer.testsTree.testTreeConverter').convertTestsToTestsTree(tests)
     mainBuffer.open()
     redrawTree()
     setupLocalKeymaps()

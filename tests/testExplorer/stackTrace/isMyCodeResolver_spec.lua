@@ -1,4 +1,4 @@
-local sut = require('inspector.explorer.isMyCodeResolver')
+local sut = require('inspector.testExplorer.stackTrace.isMyCodeResolver')
 local assert = require('luassert')
 
 describe('resolve - dotnet style', function()
@@ -9,7 +9,7 @@ describe('resolve - dotnet style', function()
         line = 157,
         highlight = {
             start = 64,
-            finish = -1
+            finish = 140
         }
     }
 

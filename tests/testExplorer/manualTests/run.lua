@@ -6,7 +6,7 @@ local stub = require('luassert.stub')
 stub(vim.fn, "getcwd", 'C:\\Projects\\EnterpriseApp')
 
 require('inspector.colorscheme').registerColors()
-local sut = require('inspector.explorer')
+local sut = require('inspector.testExplorer')
 local tests = {
     {
         namespaceParts = {'Root1', 'Part1', 'Part2'},

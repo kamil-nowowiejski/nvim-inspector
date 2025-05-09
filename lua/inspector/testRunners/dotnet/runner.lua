@@ -13,10 +13,10 @@ M.setup = function()
 end
 
 M.run = function(vimTestCmd)
-	local testExplorer = require('inspector.explorer')
+	local testExplorer = require('inspector.testExplorer')
 	testExplorer.open()
 
-    local utils = require('inspector.runners.utils')
+    local utils = require('inspector.testRunners.utils')
 	local cmd = utils.parseCmd(vimTestCmd)
     table.insert(cmd, "--no-restore")
 	table.insert(cmd, "--logger")
@@ -25,7 +25,7 @@ M.run = function(vimTestCmd)
 
 	local onExit = function()
 		vim.schedule(function()
-			local trxParser = require("inspector.runners.dotnet.trxParser")
+			local trxParser = require("inspector.testRunners.dotnet.trxParser")
 			local tests = trxParser.parse(lastTestRunTrxFile)
 			testExplorer.open()
 			testExplorer.showTests(tests)

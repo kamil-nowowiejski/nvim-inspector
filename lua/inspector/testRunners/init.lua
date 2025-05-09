@@ -38,9 +38,9 @@ local function setupJavascriptStrategies()
 end
 
 M.setupVimTest = function()
-    local dotnetRunner = require('inspector.runners.dotnet.runner')
+    local dotnetRunner = require('inspector.testRunners.dotnet.runner')
     dotnetRunner.setup()
-    local jsRunner = require('inspector.runners.javascript.runner')
+    local jsRunner = require('inspector.testRunners.javascript.runner')
 
     vim.g["test#custom_strategies"] = {
         dotnetRun = dotnetRunner.run,

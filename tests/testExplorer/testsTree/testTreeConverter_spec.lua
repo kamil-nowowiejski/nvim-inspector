@@ -1,4 +1,4 @@
-local sut = require('inspector.explorer.testTreeConverter')
+local sut = require('inspector.testExplorer.testsTree.testTreeConverter')
 local assert = require('luassert')
 
 describe('convertTestsToTestsTree', function()

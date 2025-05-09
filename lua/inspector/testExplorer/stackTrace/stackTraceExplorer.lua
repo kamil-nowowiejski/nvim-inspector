@@ -11,7 +11,7 @@ local fileRefs = nil
 local function setHighlights(buf, stackTrace)
     vim.hl.range(buf, highlights.namespace, highlights.StackTraceErrorMessage, {0, 0}, {0, -1})
 
-    local isMyCodeResolver = require('inspector.explorer.isMyCodeResolver')
+    local isMyCodeResolver = require('inspector.testExplorer.stackTrace.isMyCodeResolver')
     fileRefs = {}
     for i, line in ipairs(stackTrace) do
         local lineNumber = i + 1

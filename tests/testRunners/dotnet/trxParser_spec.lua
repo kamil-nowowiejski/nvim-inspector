@@ -1,8 +1,8 @@
-local sut = require('inspector.runners.dotnet.trxParser')
+local sut = require('inspector.testRunners.dotnet.trxParser')
 local assert = require('luassert')
 
 local function pathToTrx(fileName)
-    return vim.fn.stdpath("data") .. '/lazy/inspector/tests/runners/dotnet/trx/'..fileName..'.trx'
+    return vim.fn.stdpath("data") .. '/lazy/nvim-inspector/tests/testRunners/dotnet/trx/'..fileName..'.trx'
 end
 
 describe('parse trx', function()

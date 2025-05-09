@@ -5,7 +5,7 @@ local function getJestPath()
 end
 
 local function prepareJestCommand(vimTestCmd)
-    local utils = require('inspector.runners.utils')
+    local utils = require('inspector.testRunners.utils')
 	local cmd = utils.parseCmd(vimTestCmd)
     table.remove(cmd, 1)
     table.insert(cmd, 1, getJestPath())

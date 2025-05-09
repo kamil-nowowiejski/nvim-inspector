@@ -37,7 +37,6 @@ end
 M.open = function()
 	local isBufferVisible = vim.fn.bufwinid(mainBufferId) ~= -1
 	if mainBufferId == -1 or isBufferVisible == false then
-        print('lets go')
 		vim.api.nvim_command("belowright split 'Test Output'")
 		mainBufferId = vim.api.nvim_get_current_buf()
         local opts = { buf = mainBufferId }

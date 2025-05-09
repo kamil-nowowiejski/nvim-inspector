@@ -6,16 +6,16 @@ M.setup = function()
 end
 
 M.open = function()
-    require('inspector.explorer.ui.mainBuffer').open()
+    require('inspector.testExplorer.mainBuffer').open()
 end
 
 M.handleStdout = function(error, data)
-    require('inspector.explorer.ui.terminalOutputHandler').handleStdout(error, data)
+    require('inspector.testExplorer.terminalOutputHandler').handleStdout(error, data)
 end
 
 --- @param tests Test[]
 M.showTests = function(tests)
-    require('inspector.explorer.ui.testTreeView').showTests(tests)
+    require('inspector.testExplorer.testsTree.testTreeView').showTests(tests)
 end
 
 return M

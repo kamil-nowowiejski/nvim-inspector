@@ -1,4 +1,4 @@
-local sut = require('inspector.explorer.lineConverter')
+local sut = require('inspector.testExplorer.testsTree.lineConverter')
 local assert = require('luassert')
 
 describe('convertToLines', function()

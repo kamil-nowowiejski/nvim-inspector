@@ -1,6 +1,6 @@
 local M = {}
 
-local mainBuffer = require('inspector.explorer.ui.mainBuffer')
+local mainBuffer = require('inspector.testExplorer.mainBuffer')
 
 M.handleStdout = function(error, data)
     local text = 'nothing to show'

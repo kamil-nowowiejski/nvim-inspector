@@ -1,4 +1,4 @@
-local sut = require('inspector.runners.utils')
+local sut = require('inspector.testRunners.utils')
 local assert = require('luassert')
 
 describe('parseCmd', function()

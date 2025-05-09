@@ -1,11 +1,11 @@
 local M = {}
 
 M.setup = function()
-    require('inspector.explorer').setup()
+    require('inspector.testExplorer').setup()
 end
 
 M.setupVimTest = function()
-    require('inspector.runners').setupVimTest()
+    require('inspector.testRunners').setupVimTest()
 end
 
 return M
