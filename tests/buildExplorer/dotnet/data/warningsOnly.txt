@@ -1,0 +1,15 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+c:\GitRepos\TimeSheeter\Server\Api\EarningsApiController.cs(21,19): warning CS8625: Cannot convert null literal to non-nullable reference type. [c:\GitRepos\TimeSheeter\Server\Server.csproj]
+  Server -> c:\GitRepos\TimeSheeter\Server\bin\Debug\net9.0\Server.dll
+c:\GitRepos\TimeSheeter\Test\QuickTest.cs(14,39): warning xUnit1026: Theory method 'Run' on test class 'QuickTest' does not use parameter 'animal'. Use the parameter, or remove the parameter and associated data. (https://xunit.net/xunit.analyzers/rules/xUnit1026) [c:\GitRepos\TimeSheeter\Test\Test.csproj]
+  Test -> c:\GitRepos\TimeSheeter\Test\bin\Debug\net9.0\Test.dll
+
+Build succeeded.
+
+c:\GitRepos\TimeSheeter\Server\Api\EarningsApiController.cs(21,19): warning CS8625: Cannot convert null literal to non-nullable reference type. [c:\GitRepos\TimeSheeter\Server\Server.csproj]
+c:\GitRepos\TimeSheeter\Test\QuickTest.cs(14,39): warning xUnit1026: Theory method 'Run' on test class 'QuickTest' does not use parameter 'animal'. Use the parameter, or remove the parameter and associated data. (https://xunit.net/xunit.analyzers/rules/xUnit1026) [c:\GitRepos\TimeSheeter\Test\Test.csproj]
+    2 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.16
