@@ -39,7 +39,7 @@ local function goToFile(bufferId)
 end
 
 --- @param diagnostics Diagnostics
-M.open = function(diagnostics)
+local function showDiagnostics(diagnostics)
     local linesConverter = require('lua.inspector.buildExplorer.ui.linesConverter')
     local headerLine, diagnosticLines = linesConverter.convertToLines(diagnostics, activeTab)
 
@@ -49,12 +49,27 @@ M.open = function(diagnostics)
     end
 
     table.insert(diagnosticLines, 1, headerLine)
+    bufferManager:setLines(diagnosticLines)
+end
+
+--- @param tab ActiveTab
+local function switchToTab(tab, diagnostics)
+    if activeTab == tab then return end
+    activeTab = tab
+    showDiagnostics(diagnostics)
+end
+
+--- @param diagnostics Diagnostics
+M.open = function(diagnostics)
     bufferManager:open({
         wrap = true,
         linebreak = true,
         cursorLine = false,
         setupKeymap = function(bufferId)
-            vim.keymap.set("n", "<CR>", function() goToFile(bufferId) end, {buffer = bufferId})
+            local opts = { buffer = bufferId }
+            vim.keymap.set("n", "<CR>", function() goToFile(bufferId) end, opts)
+            vim.keymap.set("n", "<leader>e", function() switchToTab('errors', diagnostics) end, opts)
+            vim.keymap.set("n", "<leader>w", function() switchToTab('warnings', diagnostics) end, opts)
         end,
         setupAutoCmds = function(bufferId)
             vim.api.nvim_create_autocmd('CursorMoved', {
@@ -81,7 +96,7 @@ M.open = function(diagnostics)
         end
     })
 
-    bufferManager:setLines(diagnosticLines)
+    showDiagnostics(diagnostics)
 end
 
 return M

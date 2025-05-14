@@ -12,7 +12,8 @@ M.BuildExplorerErrorHeaderActive = 'BuildExplorerErrorHeaderActive'
 M.BuildExplorerErrorHeaderNotActive = 'BuildExplorerErrorHeaderNotActive'
 M.BuildExplorerWarningHeaderActive = 'BuildExplorerWarningHeaderActive'
 M.BuildExplorerWarningHeaderNotActive = 'BuildExplorerWarningHeaderNotActive'
-M.BuildExplorerIssue = 'BuildExplorerIssue'
+M.BuildExplorerErrorIcon = 'BuildExplorerErrorIcon'
+M.BuildExplorerWarningIcon = 'BuildExplorerWarningIcon'
 M.BuildExplorerFileReference = 'BuildExplorerFileReference'
 
 local red = '#ed4c4c'
@@ -59,28 +60,27 @@ M.groups = {
     },
 
     BuildExplorerErrorHeaderActive = {
-        bg = darkGrey, --'#45433e',
+        bg = darkGrey,
         fg = red
 
     },
     BuildExplorerErrorHeaderNotActive = {
-        -- bg = '',
         fg = red
     },
     BuildExplorerWarningHeaderActive = {
-        bg = darkGrey,--'#45433e',
+        bg = darkGrey,
         fg = yellow
     },
     BuildExplorerWarningHeaderNotActive = {
-        -- bg = '',
         fg = yellow
     },
-    BuildExplorerIssue = {
-        bg = '',
+    BuildExplorerErrorIcon = {
         fg = red
     },
+    BuildExplorerWarningIcon = {
+        fg = yellow
+    },
     BuildExplorerFileReference = {
-        bg = '',
         fg = violet
     }
 }

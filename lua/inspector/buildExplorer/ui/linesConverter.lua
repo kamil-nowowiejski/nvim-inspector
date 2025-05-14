@@ -33,19 +33,28 @@ end
 --- @return DiagnosictsLine[]
 local function createDiagnosticLines(diagnostics, activeTab)
     local issues = {}
-    if activeTab == 'errors' then issues = diagnostics.errors
-    elseif activeTab == 'warnings' then issues = diagnostics.warnings end
+    local prefix = '*'
+    local prefixHl = ''
+    if activeTab == 'errors' then
+        issues = diagnostics.errors
+        prefix = ''
+        prefixHl = highlights.BuildExplorerErrorIcon
+    elseif activeTab == 'warnings' then
+        issues = diagnostics.warnings
+        prefix = ''
+        prefixHl = highlights.BuildExplorerWarningIcon
+    end
 
     local lines = {}
     for _, issue in ipairs(issues) do
-        local message = '   '..issue.message
+        local message = prefix..'   '..issue.message
         local text = message..' '..issue.filePosition.fileName..':('..issue.filePosition.line..','..issue.filePosition.column..')'
         --- @type DiagnosictsLine
         local line = {
             filePosition = issue.filePosition,
             text = text,
             highlight = {
-                { name = highlights.BuildExplorerIssue, start = 0, finish = 1 },
+                { name = prefixHl, start = 0, finish = 1 },
                 { name = highlights.BuildExplorerFileReference, start = #message + 1, finish = #text - 1}
             }
         }
