@@ -37,13 +37,7 @@
 --- @field stackTrace string[] | nil applicable only if test failed
 
 ---- Internal representation of buffer lines
---- @class Line
---- @field text string
---- @field highlight LineHighlight
+--- @class Line: BufferLine
 --- @field treeNode TestTreeNode
 
---- @class LineHighlight
---- @field name string
---- @field start number
---- @field finish number
 

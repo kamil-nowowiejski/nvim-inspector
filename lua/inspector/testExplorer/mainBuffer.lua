@@ -37,13 +37,13 @@ end
 M.open = function()
 	local isBufferVisible = vim.fn.bufwinid(mainBufferId) ~= -1
 	if mainBufferId == -1 or isBufferVisible == false then
-		vim.api.nvim_command("belowright split 'Test Output'")
+		vim.api.nvim_command("belowright split Test Output")
 		mainBufferId = vim.api.nvim_get_current_buf()
         local opts = { buf = mainBufferId }
         vim.api.nvim_set_option_value('readonly', true, opts)
         vim.api.nvim_set_option_value('swapfile', false, opts)
 
-        local autocmdGroup = vim.api.nvim_create_augroup('InspctorMainBufferAutocmdGroup', {
+        local autocmdGroup = vim.api.nvim_create_augroup('InspectorTestExplorerAutocmdGroup', {
             clear = true
         })
 

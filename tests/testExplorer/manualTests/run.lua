@@ -1,6 +1,6 @@
 -- to run this test put ":source" in vim command run
 
-require('tests.manualTests.runtimepath')
+require('tests.testExplorer.manualTests.runtimepath')
 
 local stub = require('luassert.stub')
 stub(vim.fn, "getcwd", 'C:\\Projects\\EnterpriseApp')

@@ -105,7 +105,7 @@ M.show = function(testNode)
             elseif cursorLine > 1 then
                 local opts = {
                     end_row = cursorLine,
-                    line_hl_group = highlights.StackTraceCursorLine,
+                    line_hl_group = highlights.CursorLine,
                     hl_eol = true,
                     priority = 100
                 }
@@ -113,7 +113,6 @@ M.show = function(testNode)
                     opts.id = cursorLineExtmarkId
                 end
                 cursorLineExtmarkId = vim.api.nvim_buf_set_extmark(tempBuffer, highlights.extMarkNamespace, cursorLine, 0, opts)
-
             end
         end
     })

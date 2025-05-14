@@ -1,16 +1,15 @@
 --- @class Diagnostics
---- @field warnings Warning[]
---- @field errors Error[]
+--- @field warnings Issue[]
+--- @field errors Issue[]
 
---- @class Error
+--- @class Issue
 --- @field message
---- @field filePosition?
-
---- @class Warning
---- @filed message
 --- @field filePosition?
 
 --- @class FilePosition
 --- @field fileName string
 --- @field line number?
---- @filed column number?
+--- @field column number?
+
+--- @class DiagnosictsLine: BufferLine
+--- @field filePosition FilePosition?

@@ -7,36 +7,81 @@ M.TestTreeTestFailed = 'TestTreeTestFailed'
 M.StackTraceMyCode = 'StackTraceMyCode'
 M.StackTraceLine = 'StackTraceLine'
 M.StackTraceErrorMessage = 'StackTraceErrorMessage'
-M.StackTraceCursorLine = 'StackTraceCursorLine'
+M.CursorLine = 'CursorLine'
+M.BuildExplorerErrorHeaderActive = 'BuildExplorerErrorHeaderActive'
+M.BuildExplorerErrorHeaderNotActive = 'BuildExplorerErrorHeaderNotActive'
+M.BuildExplorerWarningHeaderActive = 'BuildExplorerWarningHeaderActive'
+M.BuildExplorerWarningHeaderNotActive = 'BuildExplorerWarningHeaderNotActive'
+M.BuildExplorerIssue = 'BuildExplorerIssue'
+M.BuildExplorerFileReference = 'BuildExplorerFileReference'
+
+local red = '#ed4c4c'
+local violet = '#6C74AE'
+local green = '#32a852'
+local turquoise = '#7DAEA3'
+local darkGrey = '#363636'
+local veryDarkGrey = '#0f0f0f'
+local lightGrey = '#ABA09D'
+local yellow = '#fcba03'
 
 M.groups = {
     TestTreeTestSuccess = {
-        fg = "#32a852",
+        fg = green,
     },
     TestTreeTestFailed = {
-        fg = "#ed4c4c",
+        fg = red,
     },
 
     StackTraceLine = {
-        fg = "#7DAEA3",
+        fg = turquoise,
     },
     StackTraceMyCode = {
-        fg = "#6C74AE",
+        fg = violet,
     },
     StackTraceErrorMessage = {
-        fg = "#ed4c4c",
+        fg = red,
     },
-    StackTraceCursorLine = {
-        bg = "#363636"
+    CursorLine = {
+        bg = darkGrey
     },
 
     NormalFloat = {
-        bg = '#0f0f0f',
-        fg = '#ABA09D'
+        bg = veryDarkGrey,
+        fg = lightGrey
     },
     FloatBorder = {
-        bg = '#0f0f0f',
-        fg = '#ABA09D'
+        bg = veryDarkGrey,
+        fg = lightGrey
+    },
+    Normal = {
+        bg = veryDarkGrey,
+        fg = turquoise
+    },
+
+    BuildExplorerErrorHeaderActive = {
+        bg = darkGrey, --'#45433e',
+        fg = red
+
+    },
+    BuildExplorerErrorHeaderNotActive = {
+        -- bg = '',
+        fg = red
+    },
+    BuildExplorerWarningHeaderActive = {
+        bg = darkGrey,--'#45433e',
+        fg = yellow
+    },
+    BuildExplorerWarningHeaderNotActive = {
+        -- bg = '',
+        fg = yellow
+    },
+    BuildExplorerIssue = {
+        bg = '',
+        fg = red
+    },
+    BuildExplorerFileReference = {
+        bg = '',
+        fg = violet
     }
 }
 

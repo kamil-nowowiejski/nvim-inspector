@@ -21,7 +21,6 @@ M.run = function(vimTestCmd)
     table.insert(cmd, "--no-restore")
 	table.insert(cmd, "--logger")
 	table.insert(cmd, "trx;LogFileName=" .. lastTestRunTrxFile)
-    print(vim.inspect(cmd))
 
 	local onExit = function()
 		vim.schedule(function()
