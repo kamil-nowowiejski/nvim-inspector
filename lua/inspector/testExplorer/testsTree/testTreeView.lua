@@ -50,20 +50,24 @@ local function setupLocalKeymaps(bufferId)
     vim.keymap.set("n", "o", handleOpenTestDetails, { buffer = bufferId })
 end
 
---- @param tests Test[]
-M.showTests = function(tests)
-    testsTree = require('inspector.testExplorer.testsTree.testTreeConverter').convertTestsToTestsTree(tests)
+M.open = function() 
     bufferManager:open({
         setupKeymap = function(bufferId)
             vim.keymap.set("n", "<CR>", handleEnterKey, { buffer = bufferId })
             vim.keymap.set("n", "o", handleOpenTestDetails, { buffer = bufferId })
         end
     })
+ end
+
+--- @param tests Test[]
+M.showTests = function(tests)
+    testsTree = require('inspector.testExplorer.testsTree.testTreeConverter').convertTestsToTestsTree(tests)
+    M.open()
     redrawTree()
     setupLocalKeymaps()
 end
 
 M.createStdoutHandler = function()
-    require('inspector.ui.terminalOutputHandler').createStdoutHandler(bufferManager)
+    return require('inspector.ui.terminalOutputHandler').createStdoutHandler(bufferManager)
 end
 return M
