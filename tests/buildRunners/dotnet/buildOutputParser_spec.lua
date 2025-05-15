@@ -1,4 +1,4 @@
-local sut = require('inspector.buildExplorer.dotnet.buildOutputParser')
+local sut = require('inspector.buildRunners.dotnet.buildOutputParser')
 local assert = require('luassert')
 
 local function readFileContent(filePath)
@@ -9,7 +9,7 @@ local function readFileContent(filePath)
 end
 
 local function getTestFilePath(fileName)
-    return vim.fn.stdpath("data") .. '/lazy/nvim-inspector/tests/buildExplorer/dotnet/data/'..fileName..'.txt'
+    return vim.fn.stdpath("data") .. '/lazy/nvim-inspector/tests/buildRunners/dotnet/data/'..fileName..'.txt'
 end
 
 --- @param fileName string

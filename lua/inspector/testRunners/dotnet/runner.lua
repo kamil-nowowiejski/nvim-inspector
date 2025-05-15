@@ -32,7 +32,7 @@ M.run = function(vimTestCmd)
 	end
 
 	vim.system(cmd, {
-		stdout = testExplorer.handleStdout,
+		stdout = testExplorer.createStdoutHandler(),
 		text = true,
 	}, onExit)
 end

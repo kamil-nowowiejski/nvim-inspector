@@ -1,6 +1,8 @@
 local M = {}
 
-local mainBuffer = require('inspector.testExplorer.mainBuffer')
+local highlights = require('inspector.colorscheme.highlights')
+local bufferManager = require('inspector.ui.bufferManager')
+                        .createNew('Test Output', 'InspectorTestExplorerAutocmdGroup', highlights.namespace)
 
 --- @type TestsTree
 local testsTree = nil
@@ -10,23 +12,24 @@ local lines = nil
 
 local function redrawTree()
     lines = require('inspector.testExplorer.testsTree.lineConverter').convertToLines(testsTree)
-	mainBuffer.clearTestBuffer()
-	mainBuffer.appendLinesToTestBuffer(lines)
+    bufferManager:clear()
+    bufferManager:setLines(lines)
 end
 
 local function handleEnterKey()
-	local window = vim.api.nvim_call_function("bufwinid", { mainBuffer.getId() })
+	local window = vim.api.nvim_call_function("bufwinid", { bufferManager:getBufferId() })
     local pos = vim.api.nvim_win_get_cursor(window)
-    local row = pos[1] - 1
+    local row = pos[1]
+    if lines[row].treeNode.nodeType == "test" then return end
     lines[row].treeNode.isExpanded = not lines[row].treeNode.isExpanded
     redrawTree()
     vim.api.nvim_win_set_cursor(window, pos)
 end
 
 local function handleOpenTestDetails()
-	local window = vim.api.nvim_call_function("bufwinid", { mainBuffer.getId() })
+	local window = vim.api.nvim_call_function("bufwinid", { bufferManager:getBufferId() })
     local pos = vim.api.nvim_win_get_cursor(window)
-    local row = pos[1] - 1
+    local row = pos[1]
 
     local selectedNode = lines[row].treeNode
     if selectedNode.nodeType ~= "test" then
@@ -42,16 +45,25 @@ local function handleOpenTestDetails()
     stackTraceExplorer.show(selectedNode)
 end
 
-local function setupLocalKeymaps()
-    vim.keymap.set("n", "<CR>", handleEnterKey, { buffer = mainBuffer.getId() })
-    vim.keymap.set("n", "o", handleOpenTestDetails, { buffer = mainBuffer.getId() })
+local function setupLocalKeymaps(bufferId)
+    vim.keymap.set("n", "<CR>", handleEnterKey, { buffer = bufferId })
+    vim.keymap.set("n", "o", handleOpenTestDetails, { buffer = bufferId })
 end
 
 --- @param tests Test[]
 M.showTests = function(tests)
     testsTree = require('inspector.testExplorer.testsTree.testTreeConverter').convertTestsToTestsTree(tests)
-    mainBuffer.open()
+    bufferManager:open({
+        setupKeymap = function(bufferId)
+            vim.keymap.set("n", "<CR>", handleEnterKey, { buffer = bufferId })
+            vim.keymap.set("n", "o", handleOpenTestDetails, { buffer = bufferId })
+        end
+    })
     redrawTree()
     setupLocalKeymaps()
+end
+
+M.createStdoutHandler = function()
+    require('inspector.ui.terminalOutputHandler').createStdoutHandler(bufferManager)
 end
 return M

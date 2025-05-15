@@ -1,5 +1,13 @@
 local M = {}
 
+--- @class BufferManager
+--- @field clear fun(self: BufferManager)
+--- @field open fun(self: BufferManager, config: BufferManagerConfig)
+--- @field setLines fun(self: BufferManager, lines: BufferLine[] | string[])
+--- @field appendLines fun(self: BufferManager, lines: BufferLine[] | string[])
+--- @field close fun(self: BufferManager)
+--- @field getBufferId fun(self: BufferManager): number
+
 --- @class BufferLine
 --- @field text string
 --- @field highlight BufferLineHighlight | BufferLineHighlight[]
@@ -13,8 +21,8 @@ local M = {}
 --- @field wrap? boolean defaults to false
 --- @field linebreak? boolean defaults to false
 --- @field cursorLine? boolean defaults to true
---- @field setupAutoCmds? function
---- @field setupKeymap? function 
+--- @field setupAutoCmds? fun(bufferId: number)
+--- @field setupKeymap? fun(bufferId: number) 
 
 --- @type BufferManagerConfig
 local defaultConfig = {
@@ -25,6 +33,7 @@ local defaultConfig = {
     setupKeymap = nil
 }
 
+--- @return BufferManager
 M.createNew = function(bufferName, autoCmdGroupName, highlightsNamespace)
     local manager = {
         bufferId = -1
@@ -107,6 +116,11 @@ M.createNew = function(bufferName, autoCmdGroupName, highlightsNamespace)
         end
     end
 
+    function manager:close()
+        local winId = vim.fn.bufwinid(self.bufferId)
+        if winId ~= -1 then vim.api.nvim_win_close(winId, false) end
+    end
+
     --- @param lines BufferLine[] | string[]
     local function setLines(lines, startLine)
         if #lines == 0 then
@@ -148,6 +162,8 @@ M.createNew = function(bufferName, autoCmdGroupName, highlightsNamespace)
 
     --- @param lines BufferLine[] | string[]
     function manager:appendLines(lines) setLines(lines, -1) end
+
+    function manager:getBufferId() return manager.bufferId end
 
     return manager
 end

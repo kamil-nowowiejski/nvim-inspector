@@ -4,12 +4,23 @@ local function normalizeSlashes(text)
     return text:gsub('\\', '/')
 end
 
+--- @param buildOutput string | string[]
 local function getBuildOutputLines(buildOutput)
-    local normlaizedBuildOutput = normalizeSlashes(buildOutput)
-    local buildOutputLines = vim.split(normlaizedBuildOutput, "\r\n")
-    if #buildOutputLines == 1 then
-        buildOutputLines = vim.split(normlaizedBuildOutput, "\n")
+    local buildOutputLines = nil
+
+    if type(buildOutput) == "string" then
+        buildOutputLines = vim.split(buildOutput, "\r\n")
+        if #buildOutputLines == 1 then
+            buildOutputLines = vim.split(buildOutput, "\n")
+        end
+    else
+        buildOutputLines = buildOutput
     end
+
+    for index, value in ipairs(buildOutputLines) do
+       buildOutputLines[index] = normalizeSlashes(value)
+    end
+
     return buildOutputLines
 end
 
@@ -88,7 +99,7 @@ local function addUniqueValue(collection, value)
     end
 end
 
---- @param buildOutput string 
+--- @param buildOutput string | string[]
 --- @param cwd string current working directory
 --- @return Diagnostics
 M.parse = function(buildOutput, cwd)

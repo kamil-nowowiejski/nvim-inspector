@@ -23,7 +23,7 @@ local function createHeaderLines(diagnostics, activeTab)
         text = errors..warnings,
         highlight = {
             { name = errorHlName, start = 0, finish = #errors },
-            { name = warningHlName, start = #errors - 1, finish = #errors + #warnings }
+            { name = warningHlName, start = #errors, finish = #errors + #warnings }
         }
     }
 end
@@ -55,7 +55,7 @@ local function createDiagnosticLines(diagnostics, activeTab)
             text = text,
             highlight = {
                 { name = prefixHl, start = 0, finish = 1 },
-                { name = highlights.BuildExplorerFileReference, start = #message + 1, finish = #text - 1}
+                { name = highlights.BuildExplorerFileReference, start = #message + 1, finish = #text }
             }
         }
 

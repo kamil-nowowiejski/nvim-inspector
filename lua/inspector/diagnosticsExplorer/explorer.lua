@@ -3,7 +3,7 @@ local M = {}
 
 local highlights = require('inspector.colorscheme.highlights')
 local bufferManager = require('inspector.ui.bufferManager')
-                        .createNew("Build Output", 'InspectorBuildExplorerAutocmdGroup', highlights.namespace)
+                        .createNew("Build Diagnostics", 'InspectorBuildExplorerAutocmdGroup', highlights.namespace)
 
 local activeTab = 'errors'
 local cursorLineExtmarkId = -1
@@ -40,7 +40,9 @@ end
 
 --- @param diagnostics Diagnostics
 local function showDiagnostics(diagnostics)
-    local linesConverter = require('lua.inspector.buildExplorer.ui.linesConverter')
+    if #diagnostics.errors == 0 then activeTab = 'warnings' end
+
+    local linesConverter = require('inspector.diagnosticsExplorer.linesConverter')
     local headerLine, diagnosticLines = linesConverter.convertToLines(diagnostics, activeTab)
 
     filePositions = {}
