@@ -101,5 +101,7 @@ M.open = function(diagnostics)
     showDiagnostics(diagnostics)
 end
 
+M.close = function() bufferManager:close() end
+
 return M
 

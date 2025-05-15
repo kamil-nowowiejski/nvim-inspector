@@ -21,6 +21,7 @@ local M = {}
 --- @field wrap? boolean defaults to false
 --- @field linebreak? boolean defaults to false
 --- @field cursorLine? boolean defaults to true
+--- @field colorcolumn? string defaults to ""
 --- @field setupAutoCmds? fun(bufferId: number)
 --- @field setupKeymap? fun(bufferId: number) 
 
@@ -29,6 +30,7 @@ local defaultConfig = {
     wrap = false,
     linebreak = false,
     cursorLine = true,
+    colorcolumn = "",
     setupAutoCmds = nil,
     setupKeymap = nil
 }
@@ -46,6 +48,7 @@ M.createNew = function(bufferName, autoCmdGroupName, highlightsNamespace)
         vim.api.nvim_set_option_value('wrap', config.wrap, opts)
         vim.api.nvim_set_option_value('linebreak', config.linebreak, opts)
         vim.api.nvim_set_option_value('cursorline', config.cursorLine, opts)
+        vim.api.nvim_set_option_value('colorcolumn', config.colorcolumn, opts)
     end
 
     --- @param config BufferManagerConfig
