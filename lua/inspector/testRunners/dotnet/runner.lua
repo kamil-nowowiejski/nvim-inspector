@@ -57,7 +57,7 @@ M.debug = function(vimTestCmd)
 		end
 	end
 
-    local utils = require('plugins.vimtest.utils')
+    local utils = require('inspector.testRunners.utils')
 	local cmd = utils.parseCmd(vimTestCmd)
 
 	vim.system(cmd, {
