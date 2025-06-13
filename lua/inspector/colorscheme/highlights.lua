@@ -4,6 +4,7 @@ M.namespace = vim.api.nvim_create_namespace('InspectorHighlights')
 M.extMarkNamespace = vim.api.nvim_create_namespace('InspectorExtMarks')
 M.TestTreeTestSuccess = 'TestTreeTestSuccess'
 M.TestTreeTestFailed = 'TestTreeTestFailed'
+M.TestTreeTestSkipped = 'TestTreeTestSkipped'
 M.StackTraceMyCode = 'StackTraceMyCode'
 M.StackTraceLine = 'StackTraceLine'
 M.StackTraceErrorMessage = 'StackTraceErrorMessage'
@@ -31,6 +32,9 @@ M.groups = {
     },
     TestTreeTestFailed = {
         fg = red,
+    },
+    TestTreeTestSkipped = {
+        fg = yellow
     },
 
     StackTraceLine = {

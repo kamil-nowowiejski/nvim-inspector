@@ -3,7 +3,7 @@
 --- @class Test
 --- @field testName string
 --- @field namespaceParts string[]
---- @field status "success" | "failure"
+--- @field status "success" | "failure" | "skipped"
 --- @field duration string
 --- @field errorMessage string | nil applicable only if test failed
 --- @field stackTrace string[] | nil applicable only if test failed
@@ -23,7 +23,7 @@
 --- @field roots TestTreeNode[]
 
 --- @class TestTreeNode
---- @field status "success" | "failure"
+--- @field status "success" | "failure" | "skipped"
 --- @field text string
 --- @field isExpanded boolean
 --- @field children TestTreeNode[]

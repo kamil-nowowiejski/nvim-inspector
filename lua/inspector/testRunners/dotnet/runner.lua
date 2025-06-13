@@ -22,19 +22,30 @@ M.run = function(vimTestCmd)
 	table.insert(cmd, "--logger")
 	table.insert(cmd, "trx;LogFileName=" .. lastTestRunTrxFile)
 
-	local onExit = function()
-		vim.schedule(function()
-			local trxParser = require("inspector.testRunners.dotnet.trxParser")
-			local tests = trxParser.parse(lastTestRunTrxFile)
-			testExplorer.open()
-			testExplorer.showTests(tests)
-		end)
+    local currentCommandHandler = require('inspector.ui.currentCommand')
+    local stdoutHandler = testExplorer.createStdoutHandler()
+
+	local onExit = function(out)
+        if out.signal == currentCommandHandler.cancelSignal then
+            stdoutHandler(nil, 'Command canceled')
+        else
+            vim.schedule(function()
+                local trxParser = require("inspector.testRunners.dotnet.trxParser")
+                local tests = trxParser.parse(lastTestRunTrxFile)
+                testExplorer.open()
+                testExplorer.showTests(tests)
+            end)
+        end
 	end
 
-	vim.system(cmd, {
+    stdoutHandler(nil, table.concat(cmd, ' '))
+
+	local handle = vim.system(cmd, {
 		stdout = testExplorer.createStdoutHandler(),
 		text = true,
 	}, onExit)
+
+    currentCommandHandler.setCurrentCommandHandle(handle)
 end
 
 M.debug = function(vimTestCmd)

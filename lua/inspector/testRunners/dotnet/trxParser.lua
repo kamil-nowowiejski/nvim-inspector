@@ -47,6 +47,8 @@ local function parseTest(unitTestResult)
 			return "failure"
 		elseif unitTestResult._attr.outcome == "Passed" then
 			return "success"
+        elseif unitTestResult._attr.outcome == "NotExecuted" then
+            return "skipped"
 		else
 			error("Unknown TRX test status " .. unitTestResult._attr.outcome)
 		end
@@ -60,7 +62,7 @@ local function parseTest(unitTestResult)
 
 	local getStackTrace = function()
         local stackTrace = {}
-		if unitTestResult.Output ~= nil then
+		if unitTestResult.Output ~= nil and unitTestResult.Output.ErrorInfo ~= nil and unitTestResult.Output.ErrorInfo.StackTrace ~= nil then
             local splitStackTrace = vim.split(unitTestResult.Output.ErrorInfo.StackTrace, '\r\n')
 			for _, stackTraceLine in ipairs(splitStackTrace) do
                 local line = stackTraceLine:gsub("^%s*(.-)%s*$", "%1")

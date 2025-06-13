@@ -10,8 +10,10 @@ local function setupAutocommands(keymapsSetup, filePattern)
         pattern = { "LazyVimStarted" },
         callback = function(ev)
             local file = vim.api.nvim_buf_get_name(ev.buf)
+            local fileExtension = vim.fn.fnamemodify(file, ":e")
             for _, pattern in pairs(filePattern) do
-                if file:gmatch(pattern) then
+                local patterExtension = vim.fn.fnamemodify(pattern, ":e")
+                if fileExtension == patterExtension then
                     keymapsSetup(ev)
                 end
             end

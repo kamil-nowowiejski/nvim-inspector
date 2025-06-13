@@ -8,8 +8,10 @@ local function getTestNameNodeText(node)
 	local text = ""
 	if node.status == "success" then
 		text = "✓ "
-	else
+	elseif node.status == 'failure' then
 		text = "✗ "
+    elseif node.status == 'skipped' then
+        text = "G "
 	end
 	text = text .. node.text
 	return text
@@ -52,8 +54,10 @@ local function getHighlight(node)
 	local hlName = ""
 	if node.status == "success" then
 		hlName = highlights.TestTreeTestSuccess
-	else
+	elseif node.status == "failure" then
 		hlName = highlights.TestTreeTestFailed
+    elseif node.status == "skipped" then
+        hlName = highlights.TestTreeTestSkipped
 	end
 	return {
 		name = hlName,

@@ -18,6 +18,7 @@ end
 
 local function handleEnterKey()
 	local window = vim.api.nvim_call_function("bufwinid", { bufferManager:getBufferId() })
+    if window == -1 then return end
     local pos = vim.api.nvim_win_get_cursor(window)
     local row = pos[1]
     if lines[row].treeNode.nodeType == "test" then return end

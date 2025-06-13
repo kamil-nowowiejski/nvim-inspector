@@ -31,7 +31,7 @@ M.runBuild = function(project, cleanBuild)
 
     local onExit = function(obj)
         vim.schedule(function()
-            local lines = vim.api.nvim_buf_get_lines(bufferManager.getBufferId(), 0, -1, false)
+            local lines = vim.api.nvim_buf_get_lines(bufferManager:getBufferId(), 0, -1, false)
             local buildOutputParser = require('inspector.buildRunners.dotnet.buildOutputParser')
             local diagnostics = buildOutputParser.parse(lines, vim.fn.getcwd())
             if #diagnostics.errors ~= 0 or #diagnostics.warnings ~= 0 then

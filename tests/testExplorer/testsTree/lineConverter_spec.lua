@@ -2,6 +2,12 @@ local sut = require('inspector.testExplorer.testsTree.lineConverter')
 local assert = require('luassert')
 
 describe('convertToLines', function()
+
+    local highlights = require('inspector.colorscheme.highlights')
+    local successHL = { name = highlights.TestTreeTestSuccess, start = 0, finish = -1 }
+    local failHL = { name = highlights.TestTreeTestFailed, start = 0, finish = -1 }
+    local skipHL = { name = highlights.TestTreeTestSkipped, start = 0, finish = -1 }
+
     it('multiple successes and failures', function()
         --- @type TestsTree
         local input = {
@@ -147,9 +153,6 @@ describe('convertToLines', function()
             }
         }
 
-        local highlights = require('inspector.colorscheme.highlights')
-        local successHL = { name = highlights.TestTreeTestSuccess, start = 0, finish = -1 }
-        local failHL = { name = highlights.TestTreeTestFailed, start = 0, finish = -1 }
 
         --- @type Line[]
         local expected = {
@@ -227,6 +230,49 @@ describe('convertToLines', function()
                 text = "    ✗ TestEight",
                 highlight = failHL,
                 treeNode = input.roots[2].children[1].children[2]
+            }
+        }
+
+        local actual = sut.convertToLines(input)
+        assert.are.same(expected, actual)
+    end)
+
+    it('skipped test', function()
+        --- @type TestsTree
+        local input = {
+            roots = {
+                {
+                    text = 'Root1',
+                    isExpanded = true,
+                    status = 'skipped',
+                    nodeType = 'namespace',
+                    children = {
+                        {
+                            text = 'TestOne',
+                            duration = '00:00:00.0012265',
+                            status = 'skipped',
+                            isExpanded = false,
+                            errorMessage = nil,
+                            stackTrace = nil,
+                            nodeType = 'test',
+                            children = {},
+                        }
+                    }
+                }
+            }
+        }
+
+        --- @type Line[]
+        local expected = {
+            {
+                text = "V Root1",
+                highlight = skipHL,
+                treeNode = input.roots[1]
+            },
+            {
+                text = "  G TestOne",
+                highlight = skipHL,
+                treeNode = input.roots[1].children[1]
             }
         }
 
