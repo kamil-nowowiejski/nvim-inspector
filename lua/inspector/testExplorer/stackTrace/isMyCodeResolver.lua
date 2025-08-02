@@ -1,6 +1,6 @@
 local M = { }
 
-local function normalizeSlashes(text)
+local function normalizePaths(text)
     return text:gsub('\\', '/')
 end
 
@@ -31,8 +31,8 @@ end
 --- @param projectDir string project (or solution) directory
 --- @return StackTraceFileRef | nil #if stack trace line is not from my code then returns nil 
 M.resolve = function(line, projectDir)
-    local normalizedLine = normalizeSlashes(line)
-    local normalizedProjectDir = normalizeSlashes(projectDir)
+    local normalizedLine = normalizePaths(line)
+    local normalizedProjectDir = normalizePaths(projectDir):gsub('-', '%%-')
 
     local patterns = getPatterns(normalizedProjectDir)
     for _, pattern in ipairs(patterns) do

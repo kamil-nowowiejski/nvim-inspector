@@ -134,7 +134,16 @@ M.createNew = function(bufferName, autoCmdGroupName, highlightsNamespace)
             --populate buffer with text
             local textLines = {}
             if isPlainString then
-                textLines = lines
+                for _, line in ipairs(lines) do
+                    --- @cast line string
+                    local split = vim.split(line, '\r\n')
+                    if #split == 1 then
+                        split = vim.split(line, '\n')
+                    end
+                    for _, l in ipairs(split) do
+                        table.insert(textLines, l)
+                    end
+                end
             else
                 for _, line in ipairs(lines) do
                     textLines[#textLines + 1] = line.text

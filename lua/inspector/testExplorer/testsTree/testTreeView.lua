@@ -17,6 +17,8 @@ local function redrawTree()
 end
 
 local function handleEnterKey()
+    if vim.api.nvim_get_current_buf() ~= bufferManager:getBufferId() then return end
+
 	local window = vim.api.nvim_call_function("bufwinid", { bufferManager:getBufferId() })
     if window == -1 then return end
     local pos = vim.api.nvim_win_get_cursor(window)
@@ -28,6 +30,8 @@ local function handleEnterKey()
 end
 
 local function handleOpenTestDetails()
+    if vim.api.nvim_get_current_buf() ~= bufferManager:getBufferId() then return end
+
 	local window = vim.api.nvim_call_function("bufwinid", { bufferManager:getBufferId() })
     local pos = vim.api.nvim_win_get_cursor(window)
     local row = pos[1]
@@ -51,13 +55,8 @@ local function setupLocalKeymaps(bufferId)
     vim.keymap.set("n", "o", handleOpenTestDetails, { buffer = bufferId })
 end
 
-M.open = function() 
-    bufferManager:open({
-        setupKeymap = function(bufferId)
-            vim.keymap.set("n", "<CR>", handleEnterKey, { buffer = bufferId })
-            vim.keymap.set("n", "o", handleOpenTestDetails, { buffer = bufferId })
-        end
-    })
+M.open = function()
+    bufferManager:open({ setupKeymap = setupLocalKeymaps })
  end
 
 --- @param tests Test[]
@@ -65,7 +64,7 @@ M.showTests = function(tests)
     testsTree = require('inspector.testExplorer.testsTree.testTreeConverter').convertTestsToTestsTree(tests)
     M.open()
     redrawTree()
-    setupLocalKeymaps()
+    setupLocalKeymaps(bufferManager:getBufferId())
 end
 
 M.createStdoutHandler = function()

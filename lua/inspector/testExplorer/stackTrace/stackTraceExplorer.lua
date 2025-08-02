@@ -42,9 +42,17 @@ local function goToFile(winId)
     end
 end
 
+local function dropNewLines(text)
+    local splitData = vim.split(text, "\r\n")
+    if #splitData == 1 then
+        splitData = vim.split(text, "\n")
+    end
+    return table.concat(splitData, ' ')
+end
+
 --- @param testNode TestNameNode
 M.show = function(testNode)
-    local testDetailsLines = { testNode.errorMessage, "" }
+    local testDetailsLines = { dropNewLines(testNode.errorMessage), "" }
     for _, stackTraceLine in ipairs(testNode.stackTrace) do
         table.insert(testDetailsLines, #testDetailsLines + 1, stackTraceLine)
     end
